@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowDownRight } from "lucide-react";
 import { TrustedBy } from "@/components/TrustedBy";
-import { BackgroundGrid } from '@/components/Background';
 
 export const HeroSection = () => {
   return (
@@ -25,8 +24,8 @@ export const HeroSection = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-4">
-                <button className="flex items-center gap-2 px-8 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 text-white text-sm rounded-full font-medium transition-all hover:scale-105 active:scale-95 group cursor-pointer">
-                Watch Demo
+                <button className="flex items-center gap-2 px-8 py-2.5 bg-[#4576FD] border border-white/10 hover:bg-white/10 text-white text-sm rounded-full font-medium transition-all hover:scale-105 active:scale-95 group cursor-pointer">
+                Nous découvrire
                 <div className="text-white">
                     <ArrowDownRight />
                 </div>
