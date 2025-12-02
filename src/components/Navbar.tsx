@@ -18,6 +18,7 @@ const NAV_LINKS: NavLink[] = [
   // Exemple d'un lien avec un indicateur de dropdown (le vrai menu peut être géré par un autre composant)
   { label: "Features", href: "/features", isDropdown: true },
   { label: "Tarification", href: "/pricing", isDropdown: false },
+  { label: "Contact", href: "/pricing", isDropdown: false },
   // Nous avons retiré "Contact" du menu Desktop pour garder le CTA plus visible.
 ];
 
