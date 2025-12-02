@@ -1,17 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 
-// ... (BackgroundGrid component INCHANGÉ)
 
-// Effet de "Planète" / Arc lumineux (VERSION IMAGE CORRIGÉE)
 export const BackgroundGrid = () => (
-  // Conteneur principal: 
-  // - top-0 left-1/2 -translate-x-1/2 centre le conteneur.
-  // - max-w-full assure qu'il s'étend sur toute la largeur disponible.
-  // - h-[650px] est légèrement augmenté pour donner plus d'espace à l'horizon.
   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[850px] z-0 pointer-events-none overflow-hidden">
-    
-    <div className="relative w-full h-full"> 
+    <div className="relative w-full h-full">
       <Image
         // Votre chemin d'image. Assurez-vous qu'il est correct : /public/image/back.jpg
         src="/image/back.jpg" 

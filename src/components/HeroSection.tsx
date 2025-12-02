@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowDownRight } from "lucide-react";
 import { TrustedBy } from "@/components/TrustedBy";
+import { BackgroundGrid } from '@/components/Background';
 
 export const HeroSection = () => {
   return (
