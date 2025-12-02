@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: 'Palotem Sarl',
     images: [
       {
-        url: 'https://kivusphere.vercel.app/image/shar.png',
+        url: 'https://kivusphere.vercel.app/image/logos/Asset%202.svg',
         width: 1200,
         height: 630,
         alt: 'Présentation de KivuSphere',
