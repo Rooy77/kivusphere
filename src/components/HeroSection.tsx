@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDownRight } from "lucide-react";
-import { TrustedBy } from "@/components/TrustedBy";
+
 
 export const HeroSection = () => {
   return (
@@ -17,7 +17,7 @@ export const HeroSection = () => {
                     </h1>
                     {/* Subheading */}
                     <p className="mt-8 text-sm font-medium text-gray-200 dark:text-gray-400">
-                        Nous sommes structure de consultance moderne dédiée à l&apos;accompagner et la transformation digital des entreprises en RD Congo, <span className='font-bold'>basé à Bukavu.</span> 
+                        Nous sommes structure de consultance moderne dédiée à l&apos;accompagner et la transformation digital des entreprises en <span className='font-bold'>RD Congo, basé à Bukavu.</span> 
                     </p>
                 </div>
             </div>
@@ -25,17 +25,14 @@ export const HeroSection = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-4">
                 <button className="flex items-center gap-2 px-8 py-2.5 bg-[#4576FD] border border-white/10 hover:bg-white/10 text-white text-sm rounded-full font-medium transition-all hover:scale-105 active:scale-95 group cursor-pointer">
-                Nous découvrire
-                <div className="text-white">
-                    <ArrowDownRight />
-                </div>
+                    Nous découvrire
+                    <div className="text-white">
+                        <ArrowDownRight />
+                    </div>
                 </button>
             </div>
             <div className="vide mb-16"></div>
-
-            {/* Social Proof */}
-            <TrustedBy />
-            </div>
+        </div>
     </section>
   );
 };
