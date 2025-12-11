@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { ArrowDownRight } from "lucide-react";
 
@@ -6,7 +8,6 @@ export const HeroSection = () => {
   return (
     <section data-scroll-section className='wxr-wrapper relative flex min-h-screen w-full items-center justify-center text-white'>
         <div className="relative z-10 pt-32 pb-16 md:pt-48 md:pb-32 flex flex-col min-h-screen w-full items-center px-4 overflow-hidden">
-            {/* Lueur de fond (Planet Glow) */}
             <div className="vide"></div>
             <div className="item-center relative z-10 flex justify-center mt-16 mb-6">
                 <div className='max-w-xl px-4 text-center sm:px-0'>

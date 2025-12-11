@@ -1,20 +1,18 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 
-
 export const BackgroundGrid = () => (
-  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[850px] z-0 pointer-events-none overflow-hidden">
-    <div className="relative w-full h-full">
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1400px] z-0 pointer-events-none overflow-hidden">
+    <div className="relative w-full h-[400px] sm:h-[550px] md:h-[700px] lg:h-[850px]">
       <Image
-        src="/image/back.png" 
+        src="/image/back.png"
         alt="Horizon planétaire lumineux"
-        fill // L'image remplit absolument ce conteneur relatif (w-full h-full)
+        fill
         className="
-          overflow-hidden
           object-cover 
-          // Positionne l'image en bas du conteneur pour ne voir que l'horizon
-          object-bottom 
-          // Ajustements visuels
+          object-bottom
           mix-blend-lighten 
           opacity-30 
           saturate-150 
@@ -24,8 +22,5 @@ export const BackgroundGrid = () => (
         priority
       />
     </div>
-
-    {/* Ajout d'une ombre floue en haut pour intensifier la lueur bleue sous l'image (INCHANGÉ) */}
-
   </div>
 );
