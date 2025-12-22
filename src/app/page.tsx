@@ -6,8 +6,9 @@ import React from 'react';
 import { Navbar } from '@/components/Navbar';
 
 import { BackgroundGrid } from '@/components/Background';
-import { AboutSection } from '@/components/aboutSection';
+import  AboutSection  from '@/components/aboutSection';
 import { HeroSection } from '@/components/HeroSection';
+import  ServiceSection  from '@/components/serviceSection';
 
 
 /**
@@ -22,6 +23,7 @@ export default function LandingPage() {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <ServiceSection />
     </main>
   );
 }

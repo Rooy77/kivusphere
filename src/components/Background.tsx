@@ -10,15 +10,7 @@ export const BackgroundGrid = () => (
         src="/image/back.png"
         alt="Horizon planétaire lumineux"
         fill
-        className="
-          object-cover 
-          object-bottom
-          mix-blend-lighten 
-          opacity-30 
-          saturate-150 
-          contrast-125 
-          blur-sm
-        "
+        className="object-cover object-bottom mix-blend-lighten opacity-30 saturate-150 contrast-125 blur-sm"
         priority
       />
     </div>

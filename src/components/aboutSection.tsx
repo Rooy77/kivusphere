@@ -1,195 +1,142 @@
-"use client";
+'use client';
 
-import React from "react";
-import { TrendingUp, Target, Award, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import React from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { ArrowDownRight, Wallet, Users, Layout, Briefcase } from 'lucide-react';
 
-// ----------- DATA -----------
-const valuesData = [
-  {
-    icon: TrendingUp,
-    title: "Nos valeurs",
-    description:
-      "Innovation, collaboration, excellence et impact durable guident chacune de nos actions.",
+// Animation variants pour une apparition fluide
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
   },
-  {
-    icon: Target,
-    title: "Notre Mission",
-    description:
-      "Accompagner les entreprises dans leur transformation digitale avec des solutions stratégiques et technologiques sur mesure, pour maximiser leur performance et leur impact.",
-  },
-];
+};
 
-// ----------- ValueCard -----------
-interface ValueCardProps {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-}
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
-const ValueCard: React.FC<ValueCardProps> = ({
-  icon: Icon,
-  title,
-  description,
-}) => (
-  <motion.div
-    initial={{ opacity: 0, x: 40 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true }}
-    className="flex gap-4 p-5 bg-white rounded-2xl shadow-xl shadow-gray-100 border border-gray-100 mb-6 transition-transform hover:scale-[1.02]"
-  >
-    <div className="flex-shrink-0 w-14 h-14 bg-[#3360dc]/30 rounded-full flex items-center justify-center border-2 border-[#3360dc]">
-      <Icon className="w-7 h-7 text-[#3360dc]" />
-    </div>
-    <div>
-      <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>
-      <p className="text-base text-gray-600">{description}</p>
-    </div>
-  </motion.div>
-);
-
-// ----------- ImageStack -----------
-const ImageStack = () => (
-  <div className="relative w-full h-full min-h-[550px] lg:min-h-[600px] flex items-center justify-center p-6">
-
-    {/* MAIN IMAGE */}
-    <motion.div
-      initial={{ scale: 0.9, opacity: 0 }}
-      whileInView={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="w-[85%] h-[550px] rounded-3xl overflow-hidden shadow-gray-400 z-10  border-white relative"
-    >
-      <Image
-        src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0"
-        alt="Team celebrating success"
-        fill
-        className="object-cover object-center"
-        priority
-      />
-    </motion.div>
-
-    {/* TOP LEFT IMAGE */}
-    <motion.div
-      initial={{ opacity: 0, y: -30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="absolute top-0 left-0 w-1/3 h-[180px] rounded-2xl overflow-hidden shadow-xl border-2 border-white z-20"
-    >
-      <Image
-        src="https://images.unsplash.com/photo-1551836022-d5d88e9218df"
-        alt="Business meeting"
-        fill
-        className="object-cover object-center"
-      />
-    </motion.div>
-
-    {/* BOTTOM RIGHT IMAGE */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="absolute bottom-12 right-0 w-1/3 h-[180px] rounded-2xl overflow-hidden shadow-xl border-2 border-white z-20"
-    >
-      <Image
-        src="https://images.unsplash.com/photo-1551836022-d5d88e9218df"
-        alt="Modern workspace"
-        fill
-        className="object-cover object-center"
-      />
-    </motion.div>
-
-    {/* BADGE */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="absolute bottom-[-10px] left-0 bg-[#010c29]/90 backdrop-blur-md text-white py-4 px-6 rounded border-l-4 border-[#3360dc] z-30"
-    >
-      <div className="flex items-center gap-3">
-        <Award className="w-8 h-8" />
-        <div>
-          <p className="text-4xl font-extrabold leading-none">07+</p>
-          <p className="text-sm font-medium">Années d&apos;experience</p>
-        </div>
-      </div>
-    </motion.div>
-  </div>
-);
-
-// ----------- MAIN SECTION -----------
-export const AboutSection: React.FC = () => {
-  const paragraph =
-    "Fondée pour répondre aux besoins des entreprises modernes, notre structure de consultance accompagne ses clients dans toutes les étapes de la transformation digitale : analyse stratégique, intégration technologique et optimisation des processus. Basés à Bukavu, nous aidons les entreprises de RD Congo à se positionner avec succès dans l’économie numérique.";
-
+export default function AboutSection() {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="bg-white py-24 px-4 md:px-8"
-    >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section className="w-full bg-white py-16 px-4 md:px-8 lg:px-16 overflow-hidden font-sans">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {/* COLONNE GAUCHE (Cartes) */}
+          <div className="flex flex-col gap-6">
+            
+            {/* Carte Principale (Financial Planning) */}
+            <motion.div 
+              variants={itemVariants}
+              className="bg-[#4576FD]/5 rounded-[2.5rem] p-6 relative overflow-hidden flex flex-col sm:flex-row gap-6 items-center"
+            >
+              {/* Image Container */}
+              <div className="relative w-full sm:w-1/2 h-48 sm:h-56 rounded-2xl overflow-hidden shrink-0">
+                {/* Placeholder Image - Remplacez src par votre image réelle */}
+                <Image
+                  src="https://images.pexels.com/photos/35132397/pexels-photo-35132397.jpeg"
+                  alt="Team meeting"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
 
-        {/* IMAGES */}
-        <div className="order-2 lg:order-1">
-          <ImageStack />
-        </div>
+              {/* Contenu Carte */}
+              <div className="flex flex-col justify-center relative z-10 w-full sm:w-1/2">
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  Nous analysons votre activité, définissons une feuille de route digitale claire.
+                </p>
+                <div className="vide mb-14"></div>
+                <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-3 mt-4 sm:mt-0">
+                      Stratégie digitale <br /> & consultance
+                    </h3>
+                    <span className='text-gray-900 flex items-center gap-2 font-medium hover:underline cursor-pointer'>
+                       <ArrowDownRight size={30}/>
+                    </span>
+                </div>
 
-        {/* TEXT */}
-        <div className="pt-10 order-1 lg:order-2">
-          <p className="mb-3 inline-flex items-center rounded-full px-5 py-2 text-[#4576FD] font-light">
-            <span className="mr-2 block h-1.5 w-1.5 bg-[#4576FD]"></span>
-            <span className="text-xs font-bold">A propos de nous</span>
-          </p>
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
-            Qui sommes-nous <br /> Pour vous ?
-          </h2>
+              </div>
+              
+              {/* Élément décoratif d'arrière-plan (forme vague subtile) */}
+              <div className="absolute top-1/2 right-0 w-32 h-32 bg-purple-100 rounded-full blur-2xl -z-0 translate-x-1/2 -translate-y-1/2" />
+            </motion.div>
 
-          <p className="text-gray-600 mb-10 max-w-l font-lightg">{paragraph}</p>
+            {/* Carte Statistiques */}
+            <motion.div 
+              variants={itemVariants}
+              className="bg-[#4576FD]/5 rounded-[2.5rem] p-8 flex flex-wrap justify-between items-center text-center divide-x divide-purple-200/50"
+            >
+              <div className="flex-1 px-2">
+                <h4 className="text-3xl font-bold text-gray-900">01+</h4>
+                <p className="text-gray-500 text-xs sm:text-sm mt-1">Années d’expérience</p>
+              </div>
+              <div className="flex-1 px-2">
+                <h4 className="text-3xl font-bold text-gray-900">15+</h4>
+                <p className="text-gray-500 text-xs sm:text-sm mt-1">Projets réalisés</p>
+              </div>
+              <div className="flex-1 px-2">
+                <h4 className="text-3xl font-bold text-gray-900">05+</h4>
+                <p className="text-gray-500 text-xs sm:text-sm mt-1">Clients satisfaits</p>
+              </div>
+            </motion.div>
+          </div>
 
-          {valuesData.map((item, index) => (
-            <ValueCard
-              key={index}
-              icon={item.icon}
-              title={item.title}
-              description={item.description}
-            />
-          ))}
+          {/* COLONNE DROITE (Texte) */}
+          <div className="flex flex-col items-start gap-6 lg:pl-8">
+            <motion.div variants={itemVariants}>
+              <span className="flex items-center w-auto font-bold  rounded-md text-sm mb-4 text-[#4576FD] gap-2">
+                <span className='h-2 w-2 bg-[#4576FD] rounded-full'></span>
+                Nous sommes ?
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+                Votre partenaire <br className="hidden md:block"/>
+                digital pour une croissance durable
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg">
+                Kivu Sphere est une structure moderne de consultance. Nous accompagnons les entreprises dans la définition
+                de stratégies digitales efficaces, le développement de solutions numériques performantes et la prise de
+                  décisions basées sur les données.
+              </p>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mt-12 flex items-center justify-between border-t border-gray-100 pt-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs font-bold">
-                JD
+            {/* Feature : Cost Effective */}
+            <motion.div 
+              variants={itemVariants}
+              className="w-auto bg-gray-50 rounded-2xl p-4 flex items-center gap-4 mb-6  transition-all border border-transparent hover:border-gray-100"
+            >
+              <div className="bg-[#4576FD]/20 p-3 rounded-xl text-[#4576FD] shrink-0">
+                <Wallet size={24} />
               </div>
               <div>
-                <p className="font-semibold text-gray-800">Jonas Duke</p>
-                <p className="text-sm text-gray-500">Chairman & Founder</p>
+                <h4 className="font-medium text-gray-900 text-sm">Solutions sur mesure & rentables</h4>
+                <p className="text-gray-400 text-xs">Adaptées à votre budget, sans compromettre la qualité</p>
               </div>
-            </div>
+            </motion.div>
 
-            <Link href="/about-us">
-              <button className="bg-[#4576FD] hover:bg-[#3360dc] flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium transition-colors">
-                <span>Nous Lire plus</span>
-                <div className="text-white">
-                        <ArrowUpRight />
-                    </div>
-              </button>
-            </Link>
-          </motion.div>
-        </div>
+            {/* Bouton CTA */}
+            <motion.button
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-8 py-2.5 bg-[#4576FD] border border-white/10 hover:bg-white/10 text-white text-sm rounded-full font-medium transition-all hover:scale-105 active:scale-95 group cursor-pointer"
+            >
+              Plus sur nous
+            </motion.button>
+          </div>
+
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
-};
+}
