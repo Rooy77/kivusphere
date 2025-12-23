@@ -39,80 +39,69 @@ const services: Service[] = [
     id: "04",
     title: "Consultance Informatique",
     description: "Accompagnement stratégique et optimisation des systèmes IT.",
-    icon: <Laptop className="h-6 w-6 text-indigo-600" />
+    icon: <Laptop className="h-6 w-6 text-[#4576FD]" />
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="bg-[#f8f9fc] px-8 py-24">
-      <div className="flex max-w-7xl mx-auto">
+    <section className="bg-[#f8f9fc] px-6 md:px-12 lg:px-24 py-16 md:py-24">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:gap-12">
 
         {/* HEADER */}
-        <div className="w-[80%] mb-16 ml-20 md:mb-24 space-y-6 md:space-y-8 text-center md:text-left">
+        <div className="w-full md:w-1/3 mb-12 md:mb-0 text-center md:text-left space-y-6">
           <div>
-            <span className="flex items-center w-auto font-bold  rounded-md text-sm mb-4 text-[#4576FD] gap-2">
-                <span className='h-2 w-2 bg-[#4576FD] rounded-full'></span>
-               Nos services
+            <span className="inline-flex items-center gap-2 font-bold rounded-md text-sm text-[#4576FD] mb-4">
+              <span className='h-2 w-2 bg-[#4576FD] rounded-full'></span>
+              Nos services
             </span>
 
-            <h2 className="text-4xl font-bold leading-tight text-gray-900">
-              Choose Your Favourite <br />
-              Service from Top{" "}
-              <span className="text-indigo-600">Categories</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+              Découvrez nos services <br />
+              adaptés à votre <span className="text-[#4576FD]">transformation digitale</span>
             </h2>
           </div>
 
-          <div className="flex flex-col justify-between">
-            <p className="text-gray-500 max-w-md leading-relaxed">
-              Découvrez une variété de services professionnels conçus pour
-              accélérer votre transformation digitale.
-            </p>
+          <p className="text-gray-500 text-sm sm:text-base max-w-md leading-relaxed">
+            KivuSphere vous accompagne dans votre transformation digitale et stratégique grâce à des services professionnels et sur mesure.
+          </p>
 
-            <button className="mt-8 w-fit inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-medium text-white hover:bg-indigo-700 transition">
-              Browse All Services
-              <ArrowUpRight size={16} />
-            </button>
-          </div>
+          <button className="mt-6 sm:mt-8 w-fit mx-auto md:mx-0 inline-flex items-center gap-2 rounded-full bg-[#4576FD] px-6 py-3 text-sm font-medium text-white hover:bg-[#4576FD]/90 transition">
+            Tous les services
+            <ArrowUpRight size={16} />
+          </button>
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
           {services.map(service => (
             <div
               key={service.id}
-              className={`relative rounded-2xl p-8 shadow-sm overflow-visible ${
+              className={`relative rounded-2xl p-6 sm:p-8 overflow-visible ${
                 service.featured
-                  ? "bg-indigo-600 text-white"
-                  : "bg-white text-gray-900"
-              }`}
+                  ? "bg-[#4576FD] text-white"
+                  : "bg-[#4576FD]/5 text-gray-900"
+              } `}
             >
-              {/* ICON FLOAT DEVANT LA CARTE */}
+              {/* ICON FLOAT TOUJOURS VISIBLE */}
               <div
-                className={`absolute -top-7 left-1/2 transform -translate-x-1/2 z-10 h-14 w-14 rounded-full flex items-center justify-center ${
-                  service.featured
-                    ? "bg-white/20"
-                    : "bg-indigo-100"
+                className={`absolute -top-7 -left-7 z-20 h-14 w-14 rounded-full flex items-center justify-center ${
+                  service.featured ? "bg-white/20" : "bg-indigo-100"
                 }`}
               >
                 {service.icon}
               </div>
 
               {/* CONTENT */}
-              <div className="pt-10 text-center md:text-left">
-                <h3 className="text-lg font-semibold mb-3">
-                  {service.title}
-                </h3>
+              <div className="pt-10 text-center sm:text-left relative z-10">
+                <h3 className="text-lg font-semibold mb-3">{service.title}</h3>
                 <p
                   className={`text-sm mb-6 ${
-                    service.featured
-                      ? "text-indigo-100"
-                      : "text-gray-500"
+                    service.featured ? "text-indigo-100" : "text-gray-500"
                   }`}
                 >
                   {service.description}
                 </p>
-
                 <button
                   className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium border transition ${
                     service.featured
@@ -120,21 +109,24 @@ export default function ServicesSection() {
                       : "border-gray-300 text-gray-700 hover:bg-gray-100"
                   }`}
                 >
-                  Show More
+                  Nos projets
                   <ArrowUpRight size={14} />
                 </button>
               </div>
 
               {/* BIG NUMBER */}
               <span
-                className={`absolute bottom-6 right-6 text-6xl font-bold select-none ${
-                  service.featured
-                    ? "text-white/10"
-                    : "text-gray-100"
+                className={`absolute bottom-6 right-6 text-5xl sm:text-6xl font-bold select-none ${
+                  service.featured ? "text-white/10" : "text-gray-100"
                 }`}
               >
                 {service.id}
               </span>
+
+              {/* BUBBLE EFFECT CONFINÉ DANS LA CARTE */}
+              <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+                <div className="absolute top-1/2 right-0 w-32 h-32 bg-purple-100 rounded-full blur-2xl translate-x-1/4 -translate-y-1/2"></div>
+              </div>
             </div>
           ))}
         </div>
