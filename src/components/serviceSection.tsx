@@ -6,6 +6,7 @@ import {
   ArrowUpRight
 } from "lucide-react";
 import { JSX } from "react";
+import { motion } from "framer-motion";
 
 type Service = {
   id: string;
@@ -74,14 +75,19 @@ export default function ServicesSection() {
 
         {/* GRID */}
         <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {services.map(service => (
-            <div
+          {services.map((service, index) => (
+            <motion.div
               key={service.id}
               className={`relative rounded-2xl p-6 sm:p-8 overflow-visible ${
                 service.featured
                   ? "bg-[#4576FD] text-white"
                   : "bg-[#4576FD]/5 text-gray-900"
               } `}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: .3, delay: index * 0.15 }}
+              whileHover={{ scale: 1.03}}
             >
               {/* ICON FLOAT TOUJOURS VISIBLE */}
               <div
@@ -127,7 +133,7 @@ export default function ServicesSection() {
               <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
                 <div className="absolute top-1/2 right-0 w-32 h-32 bg-purple-100 rounded-full blur-2xl translate-x-1/4 -translate-y-1/2"></div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
