@@ -9,6 +9,9 @@ import { BackgroundGrid } from '@/components/Background';
 import  AboutSection  from '@/components/aboutSection';
 import { HeroSection } from '@/components/HeroSection';
 import  ServiceSection  from '@/components/serviceSection';
+import PartnersSection from '@/components/PartnersSection';
+import ProEvent from '@/components/pro-event';
+import Footer from '@/components/footer';
 
 
 /**
@@ -24,6 +27,9 @@ export default function LandingPage() {
       <HeroSection />
       <AboutSection />
       <ServiceSection />
+      <PartnersSection />
+      <ProEvent />
+      <Footer />
     </main>
   );
 }
