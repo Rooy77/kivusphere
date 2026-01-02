@@ -28,7 +28,7 @@ const Footer = () => {
           Parlons de votre projet !
         </h2>
         <p className='text-sm text-center text-gray-700'>
-            Nous sommes basés à Goma, RDC. Quartier les volcans, 10 avenue la corniche, <br /> Immeuble Diplomatique, 3ième étage.
+            Nous sommes basés à Bukavu, RD Congo. Quartier les volcans, 10 avenue la corniche, <br /> Immeuble Diplomatique, 3ième étage.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-10 sm:gap-16">
@@ -38,17 +38,17 @@ const Footer = () => {
                 href="mailto:Kivusphere@gmail.com"
                 className="group relative flex w-full sm:w-[280px] items-center justify-center space-x-3 rounded-full px-7 py-4 font-medium text-white transition-all"
                 style={{
-                background: "linear-gradient60deg, #3b82f6, #6366f1, #f97316)", // bleu → indigo → orange
+                background: "linear-gradient(90deg, #3b82f6, #6366f1, #f97316)", // bleu → indigo → orange
                 }}
             >
                 {/* Icône Mail */}
-                <svg 
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="h-5 w-5 text-white"
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-5 w-5 text-white"
                 >
                 <path
                     strokeLinecap="round"
@@ -58,12 +58,13 @@ const Footer = () => {
                 </svg>
 
                 {/* Texte */}
-                <span className="text-sm text-white font-semibold tracking-wide">
-                    Kivusphere@gmail.com
+                <span className="text-sm text-white tracking-wide">
+                Kivusphere@gmail.com
                 </span>
-            </a>
+                </a>
 
-        </div>
+            </div>
+
 
       </div>
 
