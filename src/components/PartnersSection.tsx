@@ -7,14 +7,14 @@ type Partner = {
 };
 
 const partners: Partner[] = [
-  { id: 1, name: "Ahrefs", logo: "/image/partners/ahrefs.svg" },
-  { id: 2, name: "Microsoft", logo: "/image/partners/microsoft.svg" },
-  { id: 3, name: "Help Scout", logo: "/image/partners/helpscout.svg" },
-  { id: 4, name: "Jotform", logo: "/image/partners/jotform.svg" },
-  { id: 5, name: "Amazon", logo: "/image/partners/amazon.svg" },
-  { id: 6, name: "Notion", logo: "/image/partners/notion.svg" },
-  { id: 7, name: "LinkedIn", logo: "/image/partners/linkedin.svg" },
-  { id: 8, name: "Circle", logo: "/image/partners/circle.svg" },
+  { id: 1, name: "Ahrefs", logo: "/image/logos/bbc.svg" },
+  { id: 2, name: "Microsoft", logo: "/image/logos/hor.svg" },
+  { id: 3, name: "Help Scout", logo: "/image/logos/IMAN.svg" },
+  { id: 4, name: "Jotform", logo: "/image/logos/tos.svg" },
+  { id: 5, name: "Amazon", logo: "/image/logos/warp.svg" },
+  { id: 6, name: "Notion", logo: "/image/logos/soap.svg" },
+  { id: 7, name: "LinkedIn", logo: "/image/logos/hor.svg" },
+  { id: 8, name: "Circle", logo: "/image/logos/bbc.svg" },
 ];
 
 export default function PartnersSection() {
