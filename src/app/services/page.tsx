@@ -74,7 +74,7 @@ export default function ServicesPage() {
               <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Expertise • Agilité • Impact</span>
             </motion.div>
             <motion.h1 className="font-['Satoshi'] text-5xl font-black leading-[1.05] tracking-tight text-[var(--foreground)] md:text-7xl lg:text-8xl">
-              Au-delà du code, nous bâtissons votre <span className="text-[#4576FD]">avantage compétitif.</span>
+              Au-delà du code , nous bâtissons votre <span className="text-[#4576FD]">avantage compétitif.</span>
             </motion.h1>
             <motion.p className="mt-10 max-w-3xl text-lg leading-relaxed text-[var(--foreground)]/60 md:text-2xl">
               La transformation digitale n&apos;est pas une option, c&apos;est le moteur de votre pérennité.
