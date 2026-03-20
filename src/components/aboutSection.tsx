@@ -69,7 +69,7 @@ export default function AboutSection() {
               </div>
               
               {/* Élément décoratif d'arrière-plan (forme vague subtile) */}
-              <div className="absolute top-1/2 right-0 w-32 h-32 bg-purple-100 rounded-full blur-2xl -z-0 translate-x-1/2 -translate-y-1/2" />
+              <div className="absolute top-1/2 right-0 w-32 h-32 bg-purple-100 rounded-full blur-2xl z-0 translate-x-1/2 -translate-y-1/2" />
             </motion.div>
 
             {/* Carte Statistiques */}
@@ -79,7 +79,7 @@ export default function AboutSection() {
             >
               <div className="flex-1 px-2">
                 <h4 className="text-3xl font-bold text-gray-900">01+</h4>
-                <p className="text-gray-500 text-xs sm:text-sm mt-1">Années d’expérience</p>
+                <p className="text-gray-500 text-xs sm:text-sm mt-1">Années d'expérience</p>
               </div>
               <div className="flex-1 px-2">
                 <h4 className="text-3xl font-bold text-gray-900">15+</h4>
