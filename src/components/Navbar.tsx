@@ -49,8 +49,6 @@ export const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  console.log("Current locale in Navbar:", locale);
-
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [desktopPagesOpen, setDesktopPagesOpen] = useState(false);
@@ -107,7 +105,7 @@ export const Navbar = () => {
                 {!link.isDropdown ? (
                   <motion.div whileHover={{ scale: 1.05 }}>
                     <Link
-                      href={link.href!}
+                      href={link.href as any}
                       className="text-sm font-semibold text-primary hover:text-action transition-colors"
                     >
                       {t(link.key)}
@@ -138,7 +136,7 @@ export const Navbar = () => {
                           {link.children!.map((child) => (
                             <Link
                               key={child.key}
-                              href={child.href}
+                              href={child.href as any}
                               className="flex items-center gap-2 px-4 py-2 text-primary font-medium hover:text-action hover:bg-primary/5 hover:border-l-2 hover:border-action transition-colors text-sm"
                             >
                               {child.icon && child.icon}
@@ -234,7 +232,7 @@ export const Navbar = () => {
                 <div key={link.key} className="flex flex-col">
                   {!link.isDropdown ? (
                     <Link
-                      href={link.href!}
+                      href={link.href as any}
                       onClick={() => setIsOpen(false)}
                       className="text-lg font-medium text-gray-300 hover:text-white transition"
                     >
@@ -264,7 +262,7 @@ export const Navbar = () => {
                             {link.children!.map((child) => (
                               <Link
                                 key={child.key}
-                                href={child.href}
+                                href={child.href as any}
                                 onClick={() => setIsOpen(false)}
                                 className="flex items-center gap-2 py-2 text-gray-300 hover:text-white transition"
                               >
@@ -323,21 +321,21 @@ export const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className="text-sm text-gray-400 hover:text-white"
                 >
-                  Projets
+                  {t('projects')}
                 </Link>
                 <Link
                   href="/events"
                   onClick={() => setIsOpen(false)}
                   className="text-sm text-gray-400 hover:text-white"
                 >
-                  Événements
+                  {t('events')}
                 </Link>
                 <Link
                   href="/blog"
                   onClick={() => setIsOpen(false)}
                   className="text-sm text-gray-400 hover:text-white"
                 >
-                  Blog
+                  {t('blog')}
                 </Link>
                 <Link
                   href="/contact"
