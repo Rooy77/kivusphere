@@ -3,8 +3,17 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, FileText, BookOpen, Image as ImageIcon } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  FileText,
+  BookOpen,
+  Image as ImageIcon,
+  ArrowRight,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "./ui";
 
 interface NavLink {
   label: string;
@@ -35,23 +44,44 @@ const LANGUAGES = [
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [desktopPagesOpen, setDesktopPagesOpen] = useState(false);
   const [desktopLangOpen, setDesktopLangOpen] = useState(false);
   const [mobilePagesOpen, setMobilePagesOpen] = useState(false);
   const [mobileLangOpen, setMobileLangOpen] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <motion.nav
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl rounded-full bg-[#020408]/20 backdrop-blur-md shadow-lg transition-all"
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl rounded-full transition-all duration-500 border ${
+        scrolled
+          ? "bg-primary/20 backdrop-blur-xl border-white/20 shadow-xl py-1"
+          : "bg-[#b0c4ff]/10 backdrop-blur-lg border-white/10 py-0"
+      }`}
     >
       <div className="px-6">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/image/logos/Asset 2.svg" width={160} height={160} alt="Logo KivuSphere" />
+          <Link
+            href="/"
+            className=" px-3 py-1 rounded-full flex items-center gap-2"
+          >
+            <Image
+              src="/assets/logos/kivusphere-full-light.svg"
+              width={160}
+              height={160}
+              alt="Logo KivuSphere"
+            />
           </Link>
 
           {/* Desktop Links */}
@@ -60,7 +90,10 @@ export const Navbar = () => {
               <div key={link.label} className="relative">
                 {!link.isDropdown ? (
                   <motion.div whileHover={{ scale: 1.05 }}>
-                    <Link href={link.href!} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <Link
+                      href={link.href!}
+                      className="text-sm font-semibold text-primary hover:text-action transition-colors"
+                    >
                       {link.label}
                     </Link>
                   </motion.div>
@@ -68,10 +101,13 @@ export const Navbar = () => {
                   <>
                     <div
                       onClick={() => setDesktopPagesOpen(!desktopPagesOpen)}
-                      className="flex items-center gap-1 cursor-pointer select-none text-sm font-medium text-gray-300 hover:text-white"
+                      className="flex items-center gap-1 cursor-pointer select-none text-sm font-semibold text-primary hover:text-action"
                     >
                       {link.label}
-                      <ChevronDown size={14} className={`transition-transform ${desktopPagesOpen ? "rotate-180" : ""}`} />
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform ${desktopPagesOpen ? "rotate-180" : ""}`}
+                      />
                     </div>
 
                     <AnimatePresence>
@@ -81,13 +117,13 @@ export const Navbar = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.3 }}
-                          className="absolute top-8 left-0 w-44 bg-[#020408]/95 backdrop-blur-md shadow-lg rounded-md flex flex-col py-2"
+                          className="absolute top-8 left-0 w-44 bg-white/95 backdrop-blur-md shadow-xl rounded-xl flex flex-col py-2 border border-primary/10"
                         >
                           {link.children!.map((child) => (
                             <Link
                               key={child.label}
                               href={child.href}
-                              className="flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 hover:border-l-2 hover:border-[#4576FD] transition-colors text-sm"
+                              className="flex items-center gap-2 px-4 py-2 text-primary font-medium hover:text-action hover:bg-primary/5 hover:border-l-2 hover:border-action transition-colors text-sm"
                             >
                               {child.icon && child.icon}
                               {child.label}
@@ -100,8 +136,6 @@ export const Navbar = () => {
                 )}
               </div>
             ))}
-
-
           </div>
 
           {/* CTA & Burger */}
@@ -109,10 +143,13 @@ export const Navbar = () => {
             <div className="relative">
               <div
                 onClick={() => setDesktopLangOpen(!desktopLangOpen)}
-                className="inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full border border-gray-800 px-3 py-2 text-sm text-gray-200 sm:px-4"
+                className="inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full border border-primary/20 px-3 py-2 text-sm font-medium text-primary sm:px-4 hover:bg-primary/5 transition-colors"
               >
                 🇫🇷 <span className="ml-1">Fr</span>
-                <ChevronDown size={14} className={`transition-transform ${desktopLangOpen ? "rotate-180" : ""}`} />
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform ${desktopLangOpen ? "rotate-180" : ""}`}
+                />
               </div>
 
               <AnimatePresence>
@@ -122,12 +159,12 @@ export const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.25 }}
-                    className="absolute top-8 left-0 w-24 bg-[#020408]/95 backdrop-blur-md shadow-lg rounded-md flex flex-col py-1"
+                    className="absolute top-8 left-0 w-24 bg-white/95 backdrop-blur-md shadow-xl rounded-xl flex flex-col py-1 border border-primary/10"
                   >
                     {LANGUAGES.map((lang) => (
                       <button
                         key={lang.code}
-                        className="flex items-center gap-1 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-colors text-sm text-left"
+                        className="flex items-center gap-1 px-3 py-2 text-primary font-medium hover:text-action hover:bg-primary/5 transition-colors text-sm text-left first:rounded-t-xl last:rounded-b-xl"
                       >
                         {lang.emoji} {lang.label}
                       </button>
@@ -137,18 +174,18 @@ export const Navbar = () => {
               </AnimatePresence>
             </div>
             <div className="hidden md:flex items-center gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.96 }}
-                className="bg-[#4576FD] hover:bg-[#3360dc] text-white px-4 py-2.5 rounded-full text-xs font-bold shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-all"
-              >
-                Contact-nous
-              </motion.button>
+              <Button icon="">Contactez-nous</Button>
             </div>
 
             {/* Mobile button */}
-            <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-gray-300 hover:text-white">
-              <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden text-gray-300 hover:text-white"
+            >
+              <motion.div
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
                 {isOpen ? <X size={30} /> : <Menu size={30} />}
               </motion.div>
             </button>
@@ -167,7 +204,10 @@ export const Navbar = () => {
             className="md:hidden fixed inset-0 z-40 bg-[#020408]/95 backdrop-blur-xl flex flex-col"
           >
             <div className="flex justify-end px-6 pt-6">
-              <button onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-gray-300 hover:text-white"
+              >
                 <X size={30} />
               </button>
             </div>
@@ -258,17 +298,40 @@ export const Navbar = () => {
               </div>
             </div>
 
-            <div className="px-6 py-6 border-t border-white/10">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.96 }}
-                className="bg-[#4576FD] hover:bg-[#3360dc] text-white px-4 py-2.5 rounded-full text-xs font-bold transition shadow-[0_0_15px_rgba(37,99,235,0.4)] w-full"
-              >
-                Contact-nous
-              </motion.button>
-              <p className="text-center text-xs text-gray-400 mt-4">
-                © 2025 Kivu Sphere. Made with ❤️ & ☕
-              </p>
+            <div className="px-6 py-8 border-t border-white/10 space-y-6">
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <Link
+                  href="/projects"
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm text-gray-400 hover:text-white"
+                >
+                  Projets
+                </Link>
+                <Link
+                  href="/events"
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm text-gray-400 hover:text-white"
+                >
+                  Événements
+                </Link>
+                <Link
+                  href="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm text-gray-400 hover:text-white"
+                >
+                  Blog
+                </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm text-gray-400 hover:text-white"
+                >
+                  Support
+                </Link>
+              </div>
+              <Button icon={ArrowRight} className="w-full justify-center py-4">
+                Contactez-nous
+              </Button>
             </div>
           </motion.div>
         )}

@@ -16,12 +16,17 @@ import {
   ChevronRight,
   Send,
   Mail,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Youtube,
 } from "lucide-react";
 
 import { Navbar } from "@/components/Navbar";
-import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Button, Card, SectionHeading, Ornament } from "@/components/ui";
+import { HeroSection } from "@/components/HeroSection";
+import { BackgroundGrid } from "@/components/Background";
 
 /* ─────────────────── Fade-in animation wrapper ─────────────────── */
 const FadeIn = ({
@@ -49,32 +54,33 @@ const FadeIn = ({
    ═══════════════════════════════════════════════════════════════════ */
 const SERVICES = [
   {
-    icon: <Code className="w-8 h-8" />,
+    icon: <Code />,
     title: "Software Engineering & Mobile Systems",
     description:
       "Creation of modern, high-performance and scalable websites. Robust mobile applications for Android and iOS.",
-    accent: "from-[#4576FD] to-[#1746E9]",
+    image: "/assets/keyboard1.jpeg",
+    imagePosition: "top" as const,
   },
   {
-    icon: <Pen className="w-8 h-8" />,
+    icon: <Pen />,
     title: "Architecture, Graphic Design & UI/UX",
     description:
       "For interfaces that captivate and convert. Every pixel is designed to reduce friction and maximize customer engagement.",
-    accent: "from-[#F49C00] to-[#e08800]",
+    imagePosition: "none" as const,
   },
   {
-    icon: <Shield className="w-8 h-8" />,
+    icon: <Shield />,
     title: "Systems Audit & Security (Consulting)",
     description:
       "In a hyper-connected world, security is the foundation of trust. Our experts analyze your vulnerabilities and optimize your infrastructure.",
-    accent: "from-[#1746E9] to-[#01219B]",
   },
   {
-    icon: <BarChart3 className="w-8 h-8" />,
+    icon: <BarChart3 />,
     title: "Marketing Strategy & Digital Growth",
     description:
       "Advanced strategies to boost your visibility, engage your audience and convert more effectively through digital channels.",
-    accent: "from-[#01219B] to-[#010C29]",
+    imagePosition: "bottom" as const,
+    image: "/assets/hero-background.jpg",
   },
 ];
 
@@ -99,14 +105,14 @@ const BLOG_POSTS = [
     category: "News",
     excerpt:
       "Created on December 15, 2020, KivuSphere works to foster digital innovation and tech education in the region.",
-    image: "/image/hero.jpg",
+    image: "/assets/keyboard1.jpeg",
   },
   {
     title: "BootCamp Design",
     category: "Events",
     excerpt:
       "Our intensive design bootcamp combines UI/UX mastery with real-world projects for aspiring designers.",
-    image: "/image/hero.jpeg",
+    image: "/assets/keyboard1.jpeg",
   },
 ];
 
@@ -118,7 +124,7 @@ const TESTIMONIAL = {
   role: "CEO of Nexus OOS",
   quote:
     "We Work closely with our clients to create clear, thoughtful, and human-centered digital experiences. KivuSphere made our vision a reality.",
-  image: "/image/hero.jpg",
+  image: "/assets/keyboard1.jpeg",
 };
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -138,73 +144,27 @@ const FOOTER_LINKS = [
    ═══════════════════════════════════════════════════════════════════ */
 export default function LandingPage() {
   return (
-    <main className="relative min-h-screen font-sans overflow-x-hidden">
-      {/* ── Background ornament (absolute, behind everything) ── */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <Image
-          src="/assets/bg-ornament.svg"
-          alt=""
-          width={500}
-          height={1100}
-          className="absolute -right-40 top-0 opacity-10"
-          aria-hidden
-        />
-      </div>
-
+    <main className="relative min-h-screen font-sans overflow-x-hidden bg-[#FDFDFE]">
       <Navbar />
 
       {/* ╔═══════════════════════════════════════════════════════╗
          ║  SECTION 1 — HERO                                    ║
          ╚═══════════════════════════════════════════════════════╝ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/image/hero.jpeg"
-            alt="Hero background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-[#010C29]/80" />
-        </div>
+      <div className="relative bg-black overflow-hidden">
+        <BackgroundGrid />
 
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <FadeIn>
-            <span className="text-[#4576FD] font-mono text-sm tracking-widest uppercase">
-              &lt;/Hero&gt;
-            </span>
-          </FadeIn>
-          <FadeIn delay={0.15}>
-            <h1 className="text-5xl md:text-7xl font-bold mt-4 leading-tight">
-              Let&apos;s Turn Ideas
-              <br />
-              <span className="bg-gradient-to-r from-[#4576FD] to-[#1746E9] bg-clip-text text-transparent">
-                Into Experiences
-              </span>
-            </h1>
-          </FadeIn>
-          <FadeIn delay={0.3}>
-            <p className="text-white/60 mt-6 text-lg max-w-xl mx-auto">
-              We create clear, thoughtful, and human-centered digital
-              experiences that help brands connect meaningfully with their
-              audience.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.45}>
-            <div className="mt-8">
-              <Button variant="primary" size="lg" icon={ArrowRight}>
-                Get Started
-              </Button>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+        <HeroSection />
+      </div>
 
       {/* ╔═══════════════════════════════════════════════════════╗
          ║  SECTION 2 — ABOUT / INTRO                           ║
          ╚═══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 md:py-32 bg-[#FDFDFE] text-[#010C29]">
+      <section className="relative py-24 md:py-32 text-[#010C29] overflow-hidden">
+        <Ornament
+          position="right"
+          opacity={0.3}
+          className="absolute -bottom-40 -left-115 hidden md:block"
+        />
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           {/* Left – Text */}
           <FadeIn>
@@ -213,17 +173,14 @@ export default function LandingPage() {
                 Who are we?
               </span>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                Your digital partner for{" "}
-                <span className="text-[#4576FD]">sustainable growth</span>
+                Your digital partner for sustainable growth
               </h2>
               <p className="text-[#010C29]/60 text-lg mb-8 leading-relaxed">
                 We craft modern digital strategies, web experiences and mobile
                 systems that accelerate business growth and foster innovation in
                 the digital age.
               </p>
-              <Button variant="primary" icon={ArrowRight}>
-                See More
-              </Button>
+              <Button icon={ArrowRight}>See More</Button>
             </div>
           </FadeIn>
 
@@ -233,7 +190,7 @@ export default function LandingPage() {
               {/* Main image */}
               <div className="absolute top-0 left-0 w-3/4 h-3/4 rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/image/hero.jpeg"
+                  src="/assets/keyboard1.jpeg"
                   alt="Our team at work"
                   fill
                   className="object-cover"
@@ -242,7 +199,7 @@ export default function LandingPage() {
               {/* Secondary image */}
               <div className="absolute bottom-0 right-0 w-1/2 h-1/2 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <Image
-                  src="/image/hero.jpg"
+                  src="/assets/keyboard1.jpeg"
                   alt="Innovation"
                   fill
                   className="object-cover"
@@ -258,7 +215,7 @@ export default function LandingPage() {
       {/* ╔═══════════════════════════════════════════════════════╗
          ║  SECTION 3 — SERVICES                                ║
          ╚═══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 md:py-32 bg-[#FDFDFE] text-[#010C29]">
+      <section className="relative py-24 md:py-32 text-[#010C29]">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-16">
@@ -277,33 +234,16 @@ export default function LandingPage() {
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="columns-1 md:columns-2 gap-8 [column-fill:_balance]">
             {SERVICES.map((service, i) => (
               <FadeIn key={service.title} delay={i * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-[#010C29]/5 overflow-hidden"
-                >
-                  {/* Top accent bar */}
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.accent} opacity-0 group-hover:opacity-100 transition-opacity`}
-                  />
-
-                  {/* Icon */}
-                  <div className="mb-6 text-[#4576FD]">{service.icon}</div>
-
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-[#010C29]/50 text-sm leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-[#4576FD] hover:gap-2 transition-all"
-                  >
-                    Nos projets <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </motion.div>
+                <Card
+                  title={service.title}
+                  description={service.description}
+                  icon={service.icon}
+                  image={service.image}
+                  imagePosition={service.imagePosition}
+                />
               </FadeIn>
             ))}
           </div>
@@ -313,7 +253,12 @@ export default function LandingPage() {
       {/* ╔═══════════════════════════════════════════════════════╗
          ║  SECTION 4 — BLOG / INSIGHTS                         ║
          ╚═══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 md:py-32 bg-gradient-to-b from-[#f5f7ff] to-[#FDFDFE] text-[#010C29]">
+      <section className="relative bg-bg-soft py-24 md:py-32 text-[#010C29] overflow-hidden">
+        <Ornament
+          position="right"
+          opacity={0.4}
+          className="absolute -top-40 -right-40 hidden md:block"
+        />
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn>
             <div className="mb-12">
@@ -382,7 +327,7 @@ export default function LandingPage() {
       {/* ╔═══════════════════════════════════════════════════════╗
          ║  SECTION 5 — EVENTS                                  ║
          ╚═══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 md:py-32 bg-[#FDFDFE] text-[#010C29]">
+      <section className="relative py-24 md:py-32  text-[#010C29] m-6 max-w-[1232px] mx-auto overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-16">
@@ -402,7 +347,7 @@ export default function LandingPage() {
               {/* Event image */}
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
                 <Image
-                  src="/image/hero.jpeg"
+                  src="/assets/keyboard1.jpeg"
                   alt="Bootcamp Tech Event"
                   fill
                   className="object-cover"
@@ -440,7 +385,7 @@ export default function LandingPage() {
       {/* ╔═══════════════════════════════════════════════════════╗
          ║  SECTION 6 — PARTNERS / TRUST                        ║
          ╚═══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 md:py-32 bg-[#FDFDFE] text-[#010C29]">
+      <section className="relative py-24 md:py-32 text-[#010C29]">
         <div className="max-w-7xl mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-16">
@@ -451,27 +396,74 @@ export default function LandingPage() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.1}>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 items-center justify-items-center opacity-60">
-              {PARTNERS.map((p) => (
-                <Image
-                  key={p.name}
-                  src={p.src}
-                  alt={p.name}
-                  width={120}
-                  height={50}
-                  className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              ))}
-            </div>
-          </FadeIn>
+          <div className="relative space-y-12 overflow-hidden py-10">
+            {/* Gradients pour masquer les bords et créer un effet de fondu */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+            {/* Premier Carrousel - Vers la gauche */}
+            <FadeIn delay={0.1}>
+              <div className="flex w-full">
+                <motion.div
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{
+                    duration: 30,
+                    ease: "linear",
+                    repeat: Infinity,
+                  }}
+                  className="flex gap-20 items-center whitespace-nowrap"
+                >
+                  {[...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS].map(
+                    (p, idx) => (
+                      <Image
+                        key={`${p.name}-${idx}`}
+                        src={p.src}
+                        alt={p.name}
+                        width={140}
+                        height={60}
+                        className="h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                      />
+                    ),
+                  )}
+                </motion.div>
+              </div>
+            </FadeIn>
+
+            {/* Deuxième Carrousel - Vers la droite */}
+            <FadeIn delay={0.2}>
+              <div className="flex w-full">
+                <motion.div
+                  animate={{ x: ["-50%", "0%"] }}
+                  transition={{
+                    duration: 35,
+                    ease: "linear",
+                    repeat: Infinity,
+                  }}
+                  className="flex gap-20 items-center whitespace-nowrap"
+                >
+                  {[...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS]
+                    .reverse()
+                    .map((p, idx) => (
+                      <Image
+                        key={`${p.name}-rev-${idx}`}
+                        src={p.src}
+                        alt={p.name}
+                        width={140}
+                        height={60}
+                        className="h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                      />
+                    ))}
+                </motion.div>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
       {/* ╔═══════════════════════════════════════════════════════╗
          ║  SECTION 7 — TESTIMONIALS                            ║
          ╚═══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 md:py-32 bg-gradient-to-b from-[#FDFDFE] to-[#f5f7ff] text-[#010C29]">
+      <section className="relative py-24 md:py-32  text-[#010C29]">
         <div className="max-w-5xl mx-auto px-6">
           <FadeIn>
             <div className="text-center mb-16">
@@ -523,7 +515,12 @@ export default function LandingPage() {
       <section className="relative py-32 md:py-40 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 z-0">
-          <Image src="/image/hero.jpeg" alt="" fill className="object-cover" />
+          <Image
+            src="/assets/hero-background.jpg"
+            alt=""
+            fill
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-[#010C29]/85" />
         </div>
 
@@ -543,9 +540,7 @@ export default function LandingPage() {
             </p>
           </FadeIn>
           <FadeIn delay={0.3}>
-            <Button variant="primary" size="lg" icon={ArrowRight}>
-              Get Started
-            </Button>
+            <Button icon={ArrowRight}>Get Started</Button>
           </FadeIn>
         </div>
       </section>
@@ -553,7 +548,7 @@ export default function LandingPage() {
       {/* ╔═══════════════════════════════════════════════════════╗
          ║  FOOTER                                              ║
          ╚═══════════════════════════════════════════════════════╝ */}
-      <footer className="relative bg-[#f0f4ff] text-[#010C29] py-16">
+      <footer className="relative bg-[#F0F4FF] text-[#010C29] py-16 rounded-[50px] m-6 max-w-[1232px] mx-auto ">
         <div className="max-w-5xl mx-auto px-6 text-center">
           {/* Logo */}
           <FadeIn>
@@ -583,8 +578,8 @@ export default function LandingPage() {
                   href={link.href}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
                     i === 0
-                      ? "bg-[#010C29] text-white"
-                      : "border border-[#010C29]/15 text-[#010C29]/60 hover:border-[#4576FD] hover:text-[#4576FD]"
+                      ? "bg-secondary text-white"
+                      : "border border-secondary/15 text-secondary/60 hover:border-[#4576FD] hover:text-[#4576FD]"
                   }`}
                 >
                   {link.label}
@@ -603,9 +598,7 @@ export default function LandingPage() {
                   placeholder="Votre adresse mail"
                   className="flex-1 pl-12 pr-4 py-4 text-sm bg-transparent outline-none text-[#010C29] placeholder:text-[#010C29]/30"
                 />
-                <button className="bg-[#010C29] text-white px-6 py-4 text-sm font-semibold flex items-center gap-2 hover:bg-[#01219B] transition-colors cursor-pointer">
-                  Envoyer <Send className="w-4 h-4" />
-                </button>
+                <Button icon={Send}>Envoyer</Button>
               </div>
             </div>
           </FadeIn>
@@ -613,20 +606,22 @@ export default function LandingPage() {
           {/* Social icons */}
           <FadeIn delay={0.25}>
             <div className="flex justify-center gap-4 mb-8">
-              {["facebook", "instagram", "x", "linkedin", "youtube"].map(
-                (social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="w-10 h-10 rounded-full bg-[#010C29] text-white flex items-center justify-center hover:bg-[#4576FD] transition-colors"
-                    aria-label={social}
-                  >
-                    <span className="text-xs font-bold uppercase">
-                      {social[0]}
-                    </span>
-                  </a>
-                ),
-              )}
+              {[
+                { id: "facebook", icon: Facebook },
+                { id: "instagram", icon: Instagram },
+                { id: "twitter", icon: Twitter },
+                { id: "linkedin", icon: Linkedin },
+                { id: "youtube", icon: Youtube },
+              ].map((social) => (
+                <a
+                  key={social.id}
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center hover:bg-[#4576FD] transition-all hover:scale-110 active:scale-95"
+                  aria-label={social.id}
+                >
+                  <social.icon size={18} strokeWidth={2} />
+                </a>
+              ))}
             </div>
           </FadeIn>
 

@@ -12,33 +12,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
-  title: 'KivuSphere - Accueil',
-  description: 'Une structure de consultance moderne',
+  title: "KivuSphere - Accueil",
+  description: "Une structure de consultance moderne",
   openGraph: {
-    title: 'Kivu Sphere',
-    description: 'Une structure de consultance moderne dédiée à l\'accompagner et la transformation digital des entreprises en RD Congo, basé à Bukavu.',
-    url: 'https://kivusphere.vercel.app/',
-    siteName: 'Palotem Sarl',
+    title: "Kivu Sphere",
+    description:
+      "Une structure de consultance moderne dédiée à l'accompagner et la transformation digital des entreprises en RD Congo, basé à Bukavu.",
+    url: "https://kivusphere.vercel.app/",
+    siteName: "KivuSphere",
     images: [
       {
-        url: 'https://kivusphere.vercel.app/image/logos/Asset%202.svg',
+        url: "https://kivusphere.vercel.app/image/logos/Asset%202.svg",
         width: 1200,
         height: 630,
-        alt: 'Présentation de KivuSphere',
+        alt: "Présentation de KivuSphere",
       },
     ],
-    locale: 'fr_FR',
-    type: 'website',
+    locale: "fr_FR",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Société Palotem Sarl',
-    description: 'Notre expertise couvre le commerce général, l’import-export, les produits agricoles, les matériaux de construction, le génie civil, les énergies et les services logistiques.',
-    images: ['https://kivusphere.vercel.app/image/logos/Asset%202.svg'],
+    card: "summary_large_image",
+    title: "Société Palotem Sarl",
+    description:
+      "Notre expertise couvre le commerce général, l’import-export, les produits agricoles, les matériaux de construction, le génie civil, les énergies et les services logistiques.",
+    images: ["https://kivusphere.vercel.app/image/logos/Asset%202.svg"],
   },
-}
+};
 export default function RootLayout({
   children,
 }: Readonly<{

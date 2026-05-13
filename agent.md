@@ -1,0 +1,2 @@
+- N'utlises que des variables de couleurs pas des couleurs hardcodes ex: au lieu de bg-[#F0F4FF] utiliser bg-primary
+- Respecte l'ecole de design

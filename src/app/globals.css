@@ -8,6 +8,8 @@
   --accent: #f49c00; /* Amber/Orange */
   --secondary: #01219b; /* Dark Blue */
   --action: #4576fd; /* Bright Blue */
+  --action-soft: #b0c4ff; /* Light Blue for UI elements */
+  --bg-soft: #f0f4ff; /* Very Light Blue for section backgrounds */
 }
 
 /* Variables pour Tailwind ou autres usages */
@@ -18,6 +20,8 @@
   --color-accent: var(--accent);
   --color-secondary: var(--secondary);
   --color-action: var(--action);
+  --color-action-soft: var(--action-soft);
+  --color-bg-soft: var(--bg-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
