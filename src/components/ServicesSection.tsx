@@ -16,18 +16,21 @@ export const ServicesSection = () => {
       description: t('s1_desc'),
       image: "/assets/keyboard1.jpeg",
       imagePosition: "top" as const,
+      href: "/services",
     },
     {
       icon: <Pen />,
       title: t('s2_title'),
       description: t('s2_desc'),
       imagePosition: "none" as const,
+      href: "/services",
     },
     {
       icon: <Shield />,
       title: t('s3_title'),
       description: t('s3_desc'),
       imagePosition: "none" as const,
+      href: "/services",
     },
     {
       icon: <BarChart3 />,
@@ -35,6 +38,7 @@ export const ServicesSection = () => {
       description: t('s4_desc'),
       imagePosition: "bottom" as const,
       image: "/assets/hero-background.jpg",
+      href: "/services",
     },
   ];
 
@@ -65,6 +69,7 @@ export const ServicesSection = () => {
                 image={service.image}
                 imagePosition={service.imagePosition}
                 linkLabel={t('card_link')}
+                href={service.href}
               />
             </FadeIn>
           ))}

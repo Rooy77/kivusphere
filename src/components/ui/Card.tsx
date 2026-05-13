@@ -2,12 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import { ExternalLink } from "lucide-react";
 
 /* ─────────────────────────────────────────────
    TYPES
-───────────────────────────────────────────── */
+ ───────────────────────────────────────────── */
 type ImagePosition = "top" | "bottom" | "none";
 
 interface CardProps {
@@ -26,7 +26,7 @@ interface CardProps {
    ACCENT LINE
    Trait doré avec dégradé concentré sur la fin (droite → transparent)
    La couleur vive est à gauche, le transparent arrive progressivement
-───────────────────────────────────────────── */
+ ───────────────────────────────────────────── */
 const AccentLine = () => (
   <div
     className="h-[2.5px] "
@@ -39,7 +39,7 @@ const AccentLine = () => (
 
 /* ─────────────────────────────────────────────
    LIEN "Nos projets ↗"
-───────────────────────────────────────────── */
+ ───────────────────────────────────────────── */
 const CardLink = ({
   href = "#",
   label = "Nos projets",
@@ -48,7 +48,7 @@ const CardLink = ({
   label?: string;
 }) => (
   <Link
-    href={href}
+    href={href as any}
     className="inline-flex items-center gap-1.5 text-sm font-medium text-action"
   >
     {label}
@@ -58,13 +58,13 @@ const CardLink = ({
 
 /* ─────────────────────────────────────────────
    BASE STYLE COMMUN
-───────────────────────────────────────────── */
+ ───────────────────────────────────────────── */
 const baseStyle =
   "flex flex-col bg-[#f0f4ff] rounded-[32px] overflow-hidden border border-[#010C29]/10 shadow-sm hover:shadow-md transition-shadow duration-300 break-inside-avoid mb-6";
 
 /* ─────────────────────────────────────────────
    COMPOSANT PRINCIPAL
-───────────────────────────────────────────── */
+ ───────────────────────────────────────────── */
 export const Card = ({
   title,
   description,

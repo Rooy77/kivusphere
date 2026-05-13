@@ -4,6 +4,7 @@ import React from "react";
 import { ArrowDownRight } from "lucide-react";
 import { Button } from "./ui";
 import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
 
 export const HeroSection = () => {
   const t = useTranslations("Hero");
@@ -17,8 +18,13 @@ export const HeroSection = () => {
         <div className="vide"></div>
         <div className="item-center relative z-10 flex justify-center mt-16 mb-6">
           <div className="max-w-xl px-4 text-center sm:px-0">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-white tracking-tight leading-[1] mb-6 max-w-4xl mx-auto drop-shadow-2xl">
-              {t('title')}
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-white tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto drop-shadow-2xl">
+              {t('title').split('|').map((line, i, arr) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < arr.length - 1 && <br />}
+                </React.Fragment>
+              ))}
             </h1>
             {/* Subheading */}
             <p className="mt-8 text-sm font-medium text-gray-200 dark:text-gray-400">
@@ -29,7 +35,9 @@ export const HeroSection = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Button icon={ArrowDownRight}>{t('cta_work')}</Button>
+          <Link href="/portfolio">
+            <Button icon={ArrowDownRight}>{t('cta_work')}</Button>
+          </Link>
         </div>
         <div className="vide mb-16"></div>
       </div>

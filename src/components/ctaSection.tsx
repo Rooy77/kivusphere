@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { FadeIn } from "./FadeIn";
 import { Button } from "./ui";
 import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
 
 export const CtaSection = () => {
   const t = useTranslations("CTA");
@@ -25,16 +26,16 @@ export const CtaSection = () => {
       <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
         <FadeIn>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            {t('title')}
+            {t("title")}
           </h2>
         </FadeIn>
         <FadeIn delay={0.15}>
-          <p className="text-white/50 text-lg mb-8">
-            {t('description')}
-          </p>
+          <p className="text-white/50 text-lg mb-8">{t("description")}</p>
         </FadeIn>
         <FadeIn delay={0.3}>
-          <Button icon={ArrowRight}>{t('cta')}</Button>
+          <Link href="/contact">
+            <Button icon={ArrowRight}>{t("cta")}</Button>
+          </Link>
         </FadeIn>
       </div>
     </section>

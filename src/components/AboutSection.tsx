@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Button, Ornament } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
 import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
 
 export const AboutSection = () => {
   const t = useTranslations("About");
@@ -30,7 +31,9 @@ export const AboutSection = () => {
             <p className="text-[#010C29]/60 text-lg mb-8 leading-relaxed">
               {t('description')}
             </p>
-            <Button icon={ArrowRight}>{t('cta')}</Button>
+            <Link href="/about">
+              <Button icon={ArrowRight}>{t('cta')}</Button>
+            </Link>
           </div>
         </FadeIn>
 

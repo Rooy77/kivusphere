@@ -79,3 +79,27 @@ Pour paraître crédible et professionnel, une agence doit disposer des liens su
 4.  **Recrutement :** `/carrieres`, `/rejoindre-lequipe`.
 5.  **Légal (Pied de page) :** `/mentions-legales`, `/politique-confidentialite`, `/conditions-generales`.
 6.  **Outils :** `/faq`, `/devis-gratuit`, `/espace-client`.
+---
+
+## 📋 Suivi de Création des Pages
+
+_Cochez les cases au fur et à mesure de l'avancement. Ordre de priorité : du plus critique au moins critique._
+
+### 1. Fondations & Pages Clés
+- [x] **Accueil** (`/`) : Structure modulaire, sections i18n, design system intégré.
+- [ ] **Services** (`/nos-services`) : Présentation détaillée des offres.
+- [ ] **Portfolio** (`/realisations`) : Liste des projets et filtrage.
+- [ ] **À Propos** (`/a-propos`) : Histoire et équipe.
+- [ ] **Contact** (`/contact`) : Formulaire et coordonnées.
+
+### 2. Contenu & Crédibilité
+- [ ] **Blog** (`/blog`) : Liste des articles.
+- [ ] **Études de Cas** (`/etudes-de-cas`) : Analyses détaillées de projets réussis.
+- [ ] **Témoignages** (`/temoignages`) : Preuve sociale étendue.
+- [ ] **FAQ** (`/faq`) : Réponses aux questions fréquentes.
+
+### 3. Expansion & Légal
+- [ ] **Carrières** (`/carrieres`) : Recrutement.
+- [ ] **Press-kit** (`/presse`) : Ressources pour les médias.
+- [ ] **Légal** (`/mentions-legales`) : Mentions légales et confidentialité.
+- [ ] **Devis** (`/devis-gratuit`) : Formulaire de demande spécifique.

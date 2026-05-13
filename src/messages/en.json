@@ -14,27 +14,27 @@
   },
   "Hero": {
     "badge": "Creative Digital Agency",
-    "title": "Design. Build. Accelerate.",
-    "description": "We craft modern digital strategies, web experiences and mobile systems that accelerate business growth and foster innovation in the digital age.",
+    "title": "Transform|your vision into|digital success.",
+    "description": "We are a modern consultancy dedicated to supporting the digital transformation of businesses in DR Congo, based in Bukavu.",
     "cta_work": "Our Projects",
     "cta_learn": "Learn More"
   },
   "About": {
     "badge": "Who are we?",
     "title": "Your digital partner for sustainable growth",
-    "description": "We craft modern digital strategies, web experiences and mobile systems that accelerate business growth and foster innovation in the digital age.",
+    "description": "Kivu Sphere is a modern consultancy. We support businesses in defining effective digital strategies, developing high-performance digital solutions, and making data-driven decisions.",
     "cta": "See More"
   },
   "Services": {
     "badge": "Services",
-    "badge_alt": "Design With Purpose. Build With Impact.",
-    "description": "We Work closely with our clients to create clear, thoughtful, and human-centered digital experiences.",
+    "title": "Design With Purpose. Build With Impact.",
+    "description": "We work closely with our clients to create clear, thoughtful, and human-centered digital experiences.",
     "s1_title": "Software Engineering & Mobile Systems",
     "s1_desc": "Creation of modern, high-performance and scalable websites. Robust mobile applications for Android and iOS.",
     "s2_title": "Architecture, Graphic Design & UI/UX",
     "s2_desc": "For interfaces that captivate and convert. Every pixel is designed to reduce friction and maximize customer engagement.",
-    "s3_title": "Systems Audit & Security (Consulting)",
-    "s3_desc": "In a hyper-connected world, security is the foundation of trust. Our experts analyze your vulnerabilities and optimize your infrastructure.",
+    "s3_title": "IT Consulting",
+    "s3_desc": "Strategic support and optimization of IT systems.",
     "s4_title": "Marketing Strategy & Digital Growth",
     "s4_desc": "Advanced strategies to boost your visibility, engage your audience and convert more effectively through digital channels.",
     "card_link": "Our projects"
@@ -74,10 +74,28 @@
     "cta": "Get Started"
   },
   "Footer": {
-    "address": "We are based in Bukavu, Democratic Republic of Congo. Quartier les volcans, 10 avenue la corniche, Immeuble Diplomatique, 3rd floor.",
+    "address": "Avenue Mbaki No28 Q. Ndendere, Bukavu City, South-Kivu, DR Congo.",
     "newsletter_placeholder": "Your email address",
     "newsletter_button": "Send",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "section_company": "Company",
+    "section_services": "Expertise",
+    "section_support": "Help & Support",
+    "link_about": "About Us",
+    "link_careers": "Careers",
+    "link_blog": "Insights",
+    "link_press": "Press",
+    "link_development": "Web & Mobile Dev",
+    "link_design": "UI/UX Design",
+    "link_marketing": "Digital Marketing",
+    "link_audit": "Audit & Consulting",
+    "link_contact": "Contact",
+    "link_faq": "FAQ",
+    "link_case_studies": "Case Studies",
+    "link_quote": "Free Quote",
+    "link_legal": "Legal Notice",
+    "link_privacy": "Privacy Policy",
+    "link_terms": "Terms of Use"
   },
   "NotFound": {
     "title": "Oops! You seem lost.",

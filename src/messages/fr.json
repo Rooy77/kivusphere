@@ -14,15 +14,15 @@
   },
   "Hero": {
     "badge": "Agence Digitale Créative",
-    "title": "Design. Build. Accelerate.",
-    "description": "Nous concevons des stratégies digitales modernes, des expériences web et des systèmes mobiles qui accélèrent la croissance des entreprises et favorisent l'innovation à l'ère du numérique.",
+    "title": "Transformez|votre vision en|succès digital.",
+    "description": "Nous sommes une structure de consultance moderne dédiée à l'accompagnement et la transformation digitale des entreprises en RD Congo, basée à Bukavu.",
     "cta_work": "Nos Projets",
     "cta_learn": "En savoir plus"
   },
   "About": {
     "badge": "Qui sommes-nous ?",
     "title": "Votre partenaire digital pour une croissance durable",
-    "description": "Nous concevons des stratégies digitales modernes, des expériences web et des systèmes mobiles qui accélèrent la croissance des entreprises et favorisent l'innovation à l'ère du numérique.",
+    "description": "Kivu Sphere est une structure moderne de consultance. Nous accompagnons les entreprises dans la définition de stratégies digitales efficaces, le développement de solutions numériques performantes et la prise de décisions basées sur les données.",
     "cta": "Voir Plus"
   },
   "Services": {
@@ -33,8 +33,8 @@
     "s1_desc": "Création de sites web modernes, performants et évolutifs. Applications mobiles robustes pour Android et iOS.",
     "s2_title": "Architecture, Design Graphique & UI/UX",
     "s2_desc": "Pour des interfaces qui captivent et convertissent. Chaque pixel est conçu pour réduire les frictions et maximiser l'engagement.",
-    "s3_title": "Audit de Systèmes & Sécurité (Conseil)",
-    "s3_desc": "Dans un monde hyper-connecté, la sécurité est le socle de la confiance. Nos experts analysent vos vulnérabilités et optimisent votre infrastructure.",
+    "s3_title": "Consultance Informatique",
+    "s3_desc": "Accompagnement stratégique et optimisation des systèmes IT.",
     "s4_title": "Stratégie Marketing & Croissance Digitale",
     "s4_desc": "Des stratégies avancées pour booster votre visibilité, engager votre audience et convertir plus efficacement via les canaux numériques.",
     "card_link": "Nos projets"
@@ -74,10 +74,28 @@
     "cta": "Commencer"
   },
   "Footer": {
-    "address": "Nous sommes basés à Bukavu, République Démocratique du Congo. Quartier les volcans, 10 avenue la corniche, Immeuble Diplomatique, 3ième étage.",
+    "address": "Avenue Mbaki No28 Q. Ndendere, Ville de Bukavu, Sud-Kivu, RD Congo.",
     "newsletter_placeholder": "Votre adresse mail",
     "newsletter_button": "Envoyer",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "section_company": "Entreprise",
+    "section_services": "Expertises",
+    "section_support": "Aide & Support",
+    "link_about": "À Propos",
+    "link_careers": "Carrières",
+    "link_blog": "Insights",
+    "link_press": "Presse",
+    "link_development": "Dév. Web & Mobile",
+    "link_design": "Design UI/UX",
+    "link_marketing": "Marketing Digital",
+    "link_audit": "Audit & Conseil",
+    "link_contact": "Contact",
+    "link_faq": "FAQ",
+    "link_case_studies": "Études de cas",
+    "link_quote": "Devis Gratuit",
+    "link_legal": "Mentions Légales",
+    "link_privacy": "Confidentialité",
+    "link_terms": "CGU"
   },
   "NotFound": {
     "title": "Oups ! Vous semblez perdu.",
