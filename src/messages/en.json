@@ -1,0 +1,84 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "pages": "Pages"
+  },
+  "Hero": {
+    "badge": "Creative Digital Agency",
+    "title": "Design. Build. Accelerate.",
+    "description": "We craft modern digital strategies, web experiences and mobile systems that accelerate business growth and foster innovation in the digital age.",
+    "cta_work": "Our Projects",
+    "cta_learn": "Learn More"
+  },
+  "About": {
+    "badge": "Who are we?",
+    "title": "Your digital partner for sustainable growth",
+    "description": "We craft modern digital strategies, web experiences and mobile systems that accelerate business growth and foster innovation in the digital age.",
+    "cta": "See More"
+  },
+  "Services": {
+    "badge": "Services",
+    "badge_alt": "Design With Purpose. Build With Impact.",
+    "description": "We Work closely with our clients to create clear, thoughtful, and human-centered digital experiences.",
+    "s1_title": "Software Engineering & Mobile Systems",
+    "s1_desc": "Creation of modern, high-performance and scalable websites. Robust mobile applications for Android and iOS.",
+    "s2_title": "Architecture, Graphic Design & UI/UX",
+    "s2_desc": "For interfaces that captivate and convert. Every pixel is designed to reduce friction and maximize customer engagement.",
+    "s3_title": "Systems Audit & Security (Consulting)",
+    "s3_desc": "In a hyper-connected world, security is the foundation of trust. Our experts analyze your vulnerabilities and optimize your infrastructure.",
+    "s4_title": "Marketing Strategy & Digital Growth",
+    "s4_desc": "Advanced strategies to boost your visibility, engage your audience and convert more effectively through digital channels.",
+    "card_link": "Our projects"
+  },
+  "Blog": {
+    "badge": "Blogs",
+    "title": "Unique experiences that foster innovation and collaboration.",
+    "see_more": "See More",
+    "p1_title": "Welcome to Kivu Sphere",
+    "p1_cat": "News",
+    "p1_excerpt": "Created on December 15, 2020, KivuSphere works to foster digital innovation and tech education in the region.",
+    "p2_title": "BootCamp Design",
+    "p2_cat": "Events",
+    "p2_excerpt": "Our intensive design bootcamp combines UI/UX mastery with real-world projects for aspiring designers."
+  },
+  "Events": {
+    "badge": "Events & Training",
+    "title": "Learn. Collaborate. Grow.",
+    "event_title": "Unique Bootcamp TECH in collaboration with Huawei.",
+    "event_desc": "Participate in intensive training sessions led by industry experts. We foster digital innovation and tech education through hands-on experiences.",
+    "prev": "Prev",
+    "next": "Next"
+  },
+  "Partners": {
+    "badge": "Partners",
+    "title": "They Trust Us"
+  },
+  "Testimonials": {
+    "badge": "Testimonial",
+    "title": "What Our Clients Say",
+    "description": "We work closely with our clients to create clear, thoughtful, and human-centered digital experiences.",
+    "client_quote": "We work closely with our clients to create clear, thoughtful, and human-centered digital experiences. KivuSphere made our vision a reality."
+  },
+  "CTA": {
+    "title": "Let's Turn ideas Into Experiences",
+    "description": "We create clear, thoughtful, and human-centered digital experiences that help brands connect meaningfully with their audience.",
+    "cta": "Get Started"
+  },
+  "Footer": {
+    "address": "We are based in Bukavu, Democratic Republic of Congo. Quartier les volcans, 10 avenue la corniche, Immeuble Diplomatique, 3rd floor.",
+    "newsletter_placeholder": "Your email address",
+    "newsletter_button": "Send",
+    "rights": "All rights reserved."
+  },
+  "NotFound": {
+    "title": "Oops! You seem lost.",
+    "description": "The page you are looking for doesn't exist or has been moved to a new destination.",
+    "back_to_home": "Back to Home",
+    "go_back": "Go Back"
+  }
+}

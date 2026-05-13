@@ -1,24 +1,26 @@
+import createNextIntlPlugin from 'next-intl/plugin';
 import type { NextConfig } from "next";
 
+const withNextIntl = createNextIntlPlugin();
+
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.pexels.com', // pour les images venant de pexel
+        hostname: 'images.pexels.com',
       },
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com', // pour les images venant de unsplash
+        hostname: 'images.unsplash.com',
       },
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com', // pour les images venant de Cloudinary
+        hostname: 'res.cloudinary.com',
       },
     ],
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

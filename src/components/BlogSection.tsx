@@ -6,25 +6,26 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Ornament } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
 import { motion } from "framer-motion";
-
-const BLOG_POSTS = [
-  {
-    title: "Welcome to Kivu Sphere",
-    category: "News",
-    excerpt:
-      "Created on December 15, 2020, KivuSphere works to foster digital innovation and tech education in the region.",
-    image: "/assets/keyboard1.jpeg",
-  },
-  {
-    title: "BootCamp Design",
-    category: "Events",
-    excerpt:
-      "Our intensive design bootcamp combines UI/UX mastery with real-world projects for aspiring designers.",
-    image: "/assets/keyboard1.jpeg",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export const BlogSection = () => {
+  const t = useTranslations("Blog");
+
+  const BLOG_POSTS = [
+    {
+      title: t('p1_title'),
+      category: t('p1_cat'),
+      excerpt: t('p1_excerpt'),
+      image: "/assets/keyboard1.jpeg",
+    },
+    {
+      title: t('p2_title'),
+      category: t('p2_cat'),
+      excerpt: t('p2_excerpt'),
+      image: "/assets/keyboard1.jpeg",
+    },
+  ];
+
   return (
     <section className="relative bg-bg-soft py-24 md:py-32 text-[#010C29] overflow-hidden">
       <Ornament
@@ -36,16 +37,14 @@ export const BlogSection = () => {
         <FadeIn>
           <div className="mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
-              Blogs
+              {t('badge')}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Unique experiences that foster
-              <br />
-              innovation and collaboration.
+              {t('title')}
             </h2>
             <div className="flex items-center gap-2 mt-4">
               <span className="text-sm font-medium text-[#010C29]/60">
-                See More
+                {t('see_more')}
               </span>
               <div className="w-8 h-8 rounded-full bg-[#010C29] flex items-center justify-center">
                 <ArrowRight className="w-4 h-4 text-white" />

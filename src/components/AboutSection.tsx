@@ -5,8 +5,11 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button, Ornament } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
+import { useTranslations } from "next-intl";
 
 export const AboutSection = () => {
+  const t = useTranslations("About");
+
   return (
     <section className="relative py-24 md:py-32 text-[#010C29] overflow-hidden">
       <Ornament
@@ -19,17 +22,15 @@ export const AboutSection = () => {
         <FadeIn>
           <div>
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-6">
-              Who are we?
+              {t('badge')}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Your digital partner for sustainable growth
+              {t('title')}
             </h2>
             <p className="text-[#010C29]/60 text-lg mb-8 leading-relaxed">
-              We craft modern digital strategies, web experiences and mobile
-              systems that accelerate business growth and foster innovation in
-              the digital age.
+              {t('description')}
             </p>
-            <Button icon={ArrowRight}>See More</Button>
+            <Button icon={ArrowRight}>{t('cta')}</Button>
           </div>
         </FadeIn>
 

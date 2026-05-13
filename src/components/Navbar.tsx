@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import Link from "next/link";
+import { Link, useRouter, usePathname } from "@/navigation";
 import {
   Menu,
   X,
@@ -14,25 +14,26 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui";
+import { useTranslations, useLocale } from "next-intl";
 
 interface NavLink {
-  label: string;
+  key: string;
   href?: string;
   isDropdown: boolean;
-  children?: { label: string; href: string; icon?: React.ReactNode }[];
+  children?: { key: string; href: string; icon?: React.ReactNode }[];
 }
 
 const NAV_LINKS: NavLink[] = [
-  { label: "Accueil", href: "/", isDropdown: false },
-  { label: "A propos", href: "/about", isDropdown: false },
-  { label: "Services", href: "/services", isDropdown: false },
+  { key: "home", href: "/", isDropdown: false },
+  { key: "about", href: "/about", isDropdown: false },
+  { key: "services", href: "/services", isDropdown: false },
   {
-    label: "Pages",
+    key: "pages",
     isDropdown: true,
     children: [
-      { label: "Presse", href: "/presse", icon: <FileText size={16} /> },
-      { label: "Blogue", href: "/blogue", icon: <BookOpen size={16} /> },
-      { label: "Gallery", href: "/gallery", icon: <ImageIcon size={16} /> },
+      { key: "presse", href: "/presse", icon: <FileText size={16} /> },
+      { key: "blog", href: "/blog", icon: <BookOpen size={16} /> },
+      { key: "gallery", href: "/gallery", icon: <ImageIcon size={16} /> },
     ],
   },
 ];
@@ -43,6 +44,13 @@ const LANGUAGES = [
 ];
 
 export const Navbar = () => {
+  const t = useTranslations("Navbar");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  console.log("Current locale in Navbar:", locale);
+
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [desktopPagesOpen, setDesktopPagesOpen] = useState(false);
@@ -57,6 +65,14 @@ export const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLanguageChange = (newLocale: string) => {
+    router.replace(pathname, { locale: newLocale });
+    setDesktopLangOpen(false);
+    setMobileLangOpen(false);
+  };
+
+  const currentLang = LANGUAGES.find((l) => l.code === locale) || LANGUAGES[0];
 
   return (
     <motion.nav
@@ -87,14 +103,14 @@ export const Navbar = () => {
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-6 relative">
             {NAV_LINKS.map((link) => (
-              <div key={link.label} className="relative">
+              <div key={link.key} className="relative">
                 {!link.isDropdown ? (
                   <motion.div whileHover={{ scale: 1.05 }}>
                     <Link
                       href={link.href!}
                       className="text-sm font-semibold text-primary hover:text-action transition-colors"
                     >
-                      {link.label}
+                      {t(link.key)}
                     </Link>
                   </motion.div>
                 ) : (
@@ -103,7 +119,7 @@ export const Navbar = () => {
                       onClick={() => setDesktopPagesOpen(!desktopPagesOpen)}
                       className="flex items-center gap-1 cursor-pointer select-none text-sm font-semibold text-primary hover:text-action"
                     >
-                      {link.label}
+                      {t(link.key)}
                       <ChevronDown
                         size={14}
                         className={`transition-transform ${desktopPagesOpen ? "rotate-180" : ""}`}
@@ -121,12 +137,12 @@ export const Navbar = () => {
                         >
                           {link.children!.map((child) => (
                             <Link
-                              key={child.label}
+                              key={child.key}
                               href={child.href}
                               className="flex items-center gap-2 px-4 py-2 text-primary font-medium hover:text-action hover:bg-primary/5 hover:border-l-2 hover:border-action transition-colors text-sm"
                             >
                               {child.icon && child.icon}
-                              {child.label}
+                              {t(child.key)}
                             </Link>
                           ))}
                         </motion.div>
@@ -145,7 +161,7 @@ export const Navbar = () => {
                 onClick={() => setDesktopLangOpen(!desktopLangOpen)}
                 className="inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full border border-primary/20 px-3 py-2 text-sm font-medium text-primary sm:px-4 hover:bg-primary/5 transition-colors"
               >
-                🇫🇷 <span className="ml-1">Fr</span>
+                {currentLang.emoji} <span className="ml-1">{currentLang.label}</span>
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${desktopLangOpen ? "rotate-180" : ""}`}
@@ -164,6 +180,7 @@ export const Navbar = () => {
                     {LANGUAGES.map((lang) => (
                       <button
                         key={lang.code}
+                        onClick={() => handleLanguageChange(lang.code)}
                         className="flex items-center gap-1 px-3 py-2 text-primary font-medium hover:text-action hover:bg-primary/5 transition-colors text-sm text-left first:rounded-t-xl last:rounded-b-xl"
                       >
                         {lang.emoji} {lang.label}
@@ -174,7 +191,7 @@ export const Navbar = () => {
               </AnimatePresence>
             </div>
             <div className="hidden md:flex items-center gap-4">
-              <Button icon="">Contactez-nous</Button>
+              <Button icon="">{t('contact')}</Button>
             </div>
 
             {/* Mobile button */}
@@ -214,14 +231,14 @@ export const Navbar = () => {
 
             <div className="flex-1 flex flex-col px-6 mt-6 space-y-4 overflow-y-auto">
               {NAV_LINKS.map((link) => (
-                <div key={link.label} className="flex flex-col">
+                <div key={link.key} className="flex flex-col">
                   {!link.isDropdown ? (
                     <Link
                       href={link.href!}
                       onClick={() => setIsOpen(false)}
                       className="text-lg font-medium text-gray-300 hover:text-white transition"
                     >
-                      {link.label}
+                      {t(link.key)}
                     </Link>
                   ) : (
                     <div className="flex flex-col">
@@ -229,7 +246,7 @@ export const Navbar = () => {
                         onClick={() => setMobilePagesOpen(!mobilePagesOpen)}
                         className="flex justify-between items-center cursor-pointer text-lg font-medium text-gray-300 hover:text-white"
                       >
-                        {link.label}
+                        {t(link.key)}
                         <ChevronDown
                           className={`transition-transform ${mobilePagesOpen ? "rotate-180" : ""}`}
                           size={18}
@@ -246,13 +263,13 @@ export const Navbar = () => {
                           >
                             {link.children!.map((child) => (
                               <Link
-                                key={child.label}
+                                key={child.key}
                                 href={child.href}
                                 onClick={() => setIsOpen(false)}
                                 className="flex items-center gap-2 py-2 text-gray-300 hover:text-white transition"
                               >
                                 {child.icon && child.icon}
-                                {child.label}
+                                {t(child.key)}
                               </Link>
                             ))}
                           </motion.div>
@@ -269,7 +286,7 @@ export const Navbar = () => {
                   onClick={() => setMobileLangOpen(!mobileLangOpen)}
                   className="flex justify-between items-center cursor-pointer text-lg font-medium text-gray-300 hover:text-white"
                 >
-                  🇫🇷 <span className="ml-2">Fr</span>
+                  {currentLang.emoji} <span className="ml-2">{currentLang.label}</span>
                   <ChevronDown
                     className={`transition-transform ${mobileLangOpen ? "rotate-180" : ""}`}
                     size={18}
@@ -287,6 +304,7 @@ export const Navbar = () => {
                       {LANGUAGES.map((lang) => (
                         <button
                           key={lang.code}
+                          onClick={() => handleLanguageChange(lang.code)}
                           className="py-2 text-gray-300 hover:text-white text-left"
                         >
                           {lang.emoji} {lang.label}
@@ -330,7 +348,7 @@ export const Navbar = () => {
                 </Link>
               </div>
               <Button icon={ArrowRight} className="w-full justify-center py-4">
-                Contactez-nous
+                {t('contact')}
               </Button>
             </div>
           </motion.div>

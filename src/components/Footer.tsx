@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import {
   Mail,
   Send,
@@ -14,17 +14,21 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
+import { useTranslations } from "next-intl";
 
 const FOOTER_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { key: "home", href: "/" },
+  { key: "about", href: "/about" },
+  { key: "services", href: "/services" },
+  { key: "portfolio", href: "/portfolio" },
+  { key: "blog", href: "/blog" },
+  { key: "contact", href: "/contact" },
 ];
 
 export const Footer = () => {
+  const t = useTranslations("Footer");
+  const nt = useTranslations("Navbar");
+
   return (
     <footer className="relative bg-[#F0F4FF] text-[#010C29] py-16 rounded-[50px] m-6 max-w-[1232px] mx-auto ">
       <div className="max-w-5xl mx-auto px-6 text-center">
@@ -41,9 +45,7 @@ export const Footer = () => {
 
         <FadeIn delay={0.1}>
           <p className="text-[#010C29]/50 text-sm max-w-md mx-auto mb-8">
-            Nous sommes basés à Bukavu, République Démocratique du Congo.
-            Quartier les volcans, 10 avenue la corniche, Immeuble Diplomatique,
-            3ième étage.
+            {t('address')}
           </p>
         </FadeIn>
 
@@ -52,7 +54,7 @@ export const Footer = () => {
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             {FOOTER_LINKS.map((link, i) => (
               <Link
-                key={link.label}
+                key={link.key}
                 href={link.href}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
                   i === 0
@@ -60,7 +62,7 @@ export const Footer = () => {
                     : "border border-secondary/15 text-secondary/60 hover:border-[#4576FD] hover:text-[#4576FD]"
                 }`}
               >
-                {link.label}
+                {nt(link.key)}
               </Link>
             ))}
           </div>
@@ -73,10 +75,10 @@ export const Footer = () => {
               <Mail className="absolute left-4 w-5 h-5 text-[#010C29]/30" />
               <input
                 type="email"
-                placeholder="Votre adresse mail"
+                placeholder={t('newsletter_placeholder')}
                 className="flex-1 pl-12 pr-4 py-4 text-sm bg-transparent outline-none text-[#010C29] placeholder:text-[#010C29]/30"
               />
-              <Button icon={Send}>Envoyer</Button>
+              <Button icon={Send}>{t('newsletter_button')}</Button>
             </div>
           </div>
         </FadeIn>
@@ -104,7 +106,7 @@ export const Footer = () => {
         </FadeIn>
 
         <div className="text-xs text-[#010C29]/30 pt-6 border-t border-[#010C29]/5">
-          © {new Date().getFullYear()} KivuSphere. All rights reserved.
+          © {new Date().getFullYear()} KivuSphere. {t('rights')}
         </div>
       </div>
     </footer>

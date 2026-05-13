@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeIn } from "./FadeIn";
+import { useTranslations } from "next-intl";
 
 const PARTNERS = [
   { name: "IMAN", src: "/assets/logos/logo-iman.svg" },
@@ -15,16 +16,18 @@ const PARTNERS = [
 ];
 
 export const PartnersSection = () => {
+  const t = useTranslations("Partners");
+
   return (
     <section className="relative py-24 md:py-32 text-[#010C29]">
       <div className="max-w-7xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
-              Partners
+              {t('badge')}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-secondary">
-              They Trust Us
+              {t('title')}
             </h2>
           </div>
         </FadeIn>

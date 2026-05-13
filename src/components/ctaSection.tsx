@@ -4,8 +4,11 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { FadeIn } from "./FadeIn";
 import { Button } from "./ui";
+import { useTranslations } from "next-intl";
 
 export const CtaSection = () => {
+  const t = useTranslations("CTA");
+
   return (
     <section className="relative py-32 md:py-40 overflow-hidden">
       {/* Background */}
@@ -22,19 +25,16 @@ export const CtaSection = () => {
       <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
         <FadeIn>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Let&apos;s Turn ideas
-            <br />
-            Into Experiences
+            {t('title')}
           </h2>
         </FadeIn>
         <FadeIn delay={0.15}>
           <p className="text-white/50 text-lg mb-8">
-            We create clear, thoughtful, and human-centered digital experiences
-            that help brands connect meaningfully with their audience.
+            {t('description')}
           </p>
         </FadeIn>
         <FadeIn delay={0.3}>
-          <Button icon={ArrowRight}>Get Started</Button>
+          <Button icon={ArrowRight}>{t('cta')}</Button>
         </FadeIn>
       </div>
     </section>

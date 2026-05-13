@@ -1,12 +1,15 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowLeft, Home } from "lucide-react";
 import { Button, Ornament } from "@/components/ui";
+import { useTranslations } from "next-intl";
 
 export default function NotFound() {
+  const t = useTranslations("NotFound");
+
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg-soft">
       {/* Background Ornaments */}
@@ -20,8 +23,6 @@ export default function NotFound() {
         opacity={0.08}
         className="absolute -bottom-20 -right-40 hidden md:block"
       />
-
-
 
       <div className="relative z-10 text-center px-6 max-w-2xl">
         {/* Large 404 display */}
@@ -51,10 +52,10 @@ export default function NotFound() {
           className="mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-            Oups ! Vous semblez perdu.
+            {t('title')}
           </h2>
           <p className="text-black/60 text-lg md:text-xl max-w-md mx-auto leading-relaxed">
-            La page que vous recherchez n&apos;existe pas ou a été déplacée vers une nouvelle destination.
+            {t('description')}
           </p>
         </motion.div>
 
@@ -67,7 +68,7 @@ export default function NotFound() {
         >
           <Link href="/">
             <Button icon={Home}>
-              Retour à l&apos;accueil
+              {t('back_to_home')}
             </Button>
           </Link>
           
@@ -76,7 +77,7 @@ export default function NotFound() {
             className="flex items-center gap-2 text-black/60 hover:text-black transition-colors group px-6 py-3"
           >
             <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="font-medium">Retourner en arrière</span>
+            <span className="font-medium">{t('go_back')}</span>
           </button>
         </motion.div>
 

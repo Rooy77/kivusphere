@@ -1,0 +1,84 @@
+{
+  "Navbar": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "pages": "Pages"
+  },
+  "Hero": {
+    "badge": "Agence Digitale Créative",
+    "title": "Design. Build. Accelerate.",
+    "description": "Nous concevons des stratégies digitales modernes, des expériences web et des systèmes mobiles qui accélèrent la croissance des entreprises et favorisent l'innovation à l'ère du numérique.",
+    "cta_work": "Nos Projets",
+    "cta_learn": "En savoir plus"
+  },
+  "About": {
+    "badge": "Qui sommes-nous ?",
+    "title": "Votre partenaire digital pour une croissance durable",
+    "description": "Nous concevons des stratégies digitales modernes, des expériences web et des systèmes mobiles qui accélèrent la croissance des entreprises et favorisent l'innovation à l'ère du numérique.",
+    "cta": "Voir Plus"
+  },
+  "Services": {
+    "badge": "Services",
+    "title": "Concevoir avec intention. Bâtir avec impact.",
+    "description": "Nous travaillons en étroite collaboration avec nos clients pour créer des expériences numériques claires, réfléchies et centrées sur l'humain.",
+    "s1_title": "Ingénierie Logicielle & Systèmes Mobiles",
+    "s1_desc": "Création de sites web modernes, performants et évolutifs. Applications mobiles robustes pour Android et iOS.",
+    "s2_title": "Architecture, Design Graphique & UI/UX",
+    "s2_desc": "Pour des interfaces qui captivent et convertissent. Chaque pixel est conçu pour réduire les frictions et maximiser l'engagement.",
+    "s3_title": "Audit de Systèmes & Sécurité (Conseil)",
+    "s3_desc": "Dans un monde hyper-connecté, la sécurité est le socle de la confiance. Nos experts analysent vos vulnérabilités et optimisent votre infrastructure.",
+    "s4_title": "Stratégie Marketing & Croissance Digitale",
+    "s4_desc": "Des stratégies avancées pour booster votre visibilité, engager votre audience et convertir plus efficacement via les canaux numériques.",
+    "card_link": "Nos projets"
+  },
+  "Blog": {
+    "badge": "Blogs",
+    "title": "Des expériences uniques qui favorisent l'innovation et la collaboration.",
+    "see_more": "Voir Plus",
+    "p1_title": "Bienvenue chez Kivu Sphere",
+    "p1_cat": "Actualités",
+    "p1_excerpt": "Créée le 15 décembre 2020, KivuSphere travaille à favoriser l'innovation numérique et l'éducation technologique dans la région.",
+    "p2_title": "BootCamp Design",
+    "p2_cat": "Événements",
+    "p2_excerpt": "Notre bootcamp de design intensif combine la maîtrise de l'UI/UX avec des projets réels pour les designers en herbe."
+  },
+  "Events": {
+    "badge": "Événements & Formations",
+    "title": "Apprendre. Collaborer. Grandir.",
+    "event_title": "Bootcamp TECH unique en collaboration avec Huawei.",
+    "event_desc": "Participez à des sessions de formation intensives animées par des experts du secteur. Nous favorisons l'innovation numérique et l'éducation technologique par des expériences pratiques.",
+    "prev": "Précédent",
+    "next": "Suivant"
+  },
+  "Partners": {
+    "badge": "Partenaires",
+    "title": "Ils nous font confiance"
+  },
+  "Testimonials": {
+    "badge": "Témoignage",
+    "title": "Ce que nos clients disent",
+    "description": "Nous travaillons en étroite collaboration avec nos clients pour créer des expériences numériques claires, réfléchies et centrées sur l'humain.",
+    "client_quote": "Nous travaillons en étroite collaboration avec nos clients pour créer des expériences numériques claires, réfléchies et centrées sur l'humain. KivuSphere a fait de notre vision une réalité."
+  },
+  "CTA": {
+    "title": "Transformons vos idées en expériences",
+    "description": "Nous créons des expériences numériques claires, réfléchies et centrées sur l'humain qui aident les marques à se connecter de manière significative avec leur public.",
+    "cta": "Commencer"
+  },
+  "Footer": {
+    "address": "Nous sommes basés à Bukavu, République Démocratique du Congo. Quartier les volcans, 10 avenue la corniche, Immeuble Diplomatique, 3ième étage.",
+    "newsletter_placeholder": "Votre adresse mail",
+    "newsletter_button": "Envoyer",
+    "rights": "Tous droits réservés."
+  },
+  "NotFound": {
+    "title": "Oups ! Vous semblez perdu.",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée vers une nouvelle destination.",
+    "back_to_home": "Retour à l'accueil",
+    "go_back": "Retourner en arrière"
+  }
+}

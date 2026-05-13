@@ -3,30 +3,31 @@
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import { FadeIn } from "./FadeIn";
-
-const TESTIMONIAL = {
-  name: "Ishimwe Israel Dixon",
-  role: "CEO of Nexus OOS",
-  quote:
-    "We Work closely with our clients to create clear, thoughtful, and human-centered digital experiences. KivuSphere made our vision a reality.",
-  image: "/assets/keyboard1.jpeg",
-};
+import { useTranslations } from "next-intl";
 
 export const TestimonialsSection = () => {
+  const t = useTranslations("Testimonials");
+
+  const TESTIMONIAL = {
+    name: "Ishimwe Israel Dixon",
+    role: "CEO of Nexus OOS",
+    quote: t('client_quote'),
+    image: "/assets/keyboard1.jpeg",
+  };
+
   return (
     <section className="relative py-24 md:py-32  text-[#010C29]">
       <div className="max-w-5xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
-              Testimonial
+              {t('badge')}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              What Our Clients Say
+              {t('title')}
             </h2>
             <p className="text-[#010C29]/50 max-w-xl mx-auto">
-              We work closely with our clients to create clear, thoughtful, and
-              human-centered digital experiences.
+              {t('description')}
             </p>
           </div>
         </FadeIn>
