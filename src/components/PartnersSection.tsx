@@ -24,10 +24,10 @@ export const PartnersSection = () => {
         <FadeIn>
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
-              {t('badge')}
+              {t("badge")}
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-secondary">
-              {t('title')}
+            <h2 className="text-4xl md:text-5xl font-bold text-text">
+              {t("title")}
             </h2>
           </div>
         </FadeIn>
@@ -59,7 +59,7 @@ export const PartnersSection = () => {
                       height={60}
                       className="h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
                     />
-                  )
+                  ),
                 )}
               </motion.div>
             </div>
