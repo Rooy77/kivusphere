@@ -11,7 +11,7 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { Footer } from "@/components/Footer";
 import { CtaSection } from "@/components/ctaSection";
 
-export default async function Home({ params }: { params: { locale: string } }) {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
   return (
