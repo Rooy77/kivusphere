@@ -1,43 +1,59 @@
 "use client";
 
-import React from "react";
-import { Code, Pen, Shield, BarChart3 } from "lucide-react";
+import Image from "next/image";
 import { Card } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
 import { useTranslations } from "next-intl";
+
+const ServiceIcon = ({
+  src,
+  width,
+  height,
+}: {
+  src: string;
+  width: number;
+  height: number;
+}) => (
+  <Image
+    src={src}
+    alt=""
+    width={width}
+    height={height}
+    className="block h-auto max-h-11 w-auto"
+    aria-hidden
+  />
+);
 
 export const ServicesSection = () => {
   const t = useTranslations("Services");
 
   const SERVICES = [
     {
-      icon: <Code />,
       title: t("s1_title"),
       description: t("s1_desc"),
-      image: "/assets/keyboard1.jpeg",
+      image: "/assets/software.jpg",
       imagePosition: "top" as const,
       href: "/services",
     },
     {
-      icon: <Pen />,
+      icon: <ServiceIcon src="/assets/marketing.svg" width={43} height={47} />,
       title: t("s2_title"),
       description: t("s2_desc"),
       imagePosition: "none" as const,
       href: "/services",
     },
     {
-      icon: <Shield />,
+      icon: <ServiceIcon src="/assets/shield.svg" width={51} height={43} />,
       title: t("s3_title"),
       description: t("s3_desc"),
       imagePosition: "none" as const,
       href: "/services",
     },
     {
-      icon: <BarChart3 />,
       title: t("s4_title"),
       description: t("s4_desc"),
+      image: "/assets/software.jpg",
       imagePosition: "bottom" as const,
-      image: "/assets/hero-background.jpg",
       href: "/services",
     },
   ];
@@ -50,12 +66,14 @@ export const ServicesSection = () => {
             <span className="self-start inline-block px-5 py-2 rounded-full border border-black text-xs font-medium text-black">
               {t("badge")}
             </span>
-            <h2 className="section-title mb-4">{t("title")}</h2>
+            <h2 className="section-title mb-4 whitespace-pre-line">
+              {t("title")}
+            </h2>
             <p className="max-w-xl mx-auto">{t("description")}</p>
           </div>
         </FadeIn>
 
-        <div className="columns-1 md:columns-2 gap-8 [column-fill:_balance]">
+        <div className="columns-1 md:columns-2 gap-8 [column-fill:_balance] max-w-[1048px] mx-auto">
           {SERVICES.map((service, i) => (
             <FadeIn key={service.title} delay={i * 0.1}>
               <Card

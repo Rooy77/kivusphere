@@ -29,16 +29,16 @@
   },
   "Services": {
     "badge": "Services",
-    "title": "Concevoir avec intention. Bâtir avec impact.",
+    "title": "Concevoir avec intention.\nBâtir avec impact.",
     "description": "Nous travaillons en étroite collaboration avec nos clients pour créer des expériences numériques claires, réfléchies et centrées sur l'humain.",
     "s1_title": "Ingénierie Logicielle & Systèmes Mobiles",
     "s1_desc": "Création de sites web modernes, performants et évolutifs. Applications mobiles robustes pour Android et iOS.",
-    "s2_title": "Architecture, Design Graphique & UI/UX",
-    "s2_desc": "Pour des interfaces qui captivent et convertissent. Chaque pixel est conçu pour réduire les frictions et maximiser l'engagement.",
-    "s3_title": "Consultance Informatique",
-    "s3_desc": "Accompagnement stratégique et optimisation des systèmes IT.",
-    "s4_title": "Stratégie Marketing & Croissance Digitale",
-    "s4_desc": "Des stratégies avancées pour booster votre visibilité, engager votre audience et convertir plus efficacement via les canaux numériques.",
+    "s2_title": "Stratégie Marketing & Croissance Digitale",
+    "s2_desc": "Des stratégies avancées pour booster votre visibilité, engager votre audience et convertir plus efficacement via les canaux numériques.",
+    "s3_title": "Architecture, Design Graphique & UI/UX",
+    "s3_desc": "Pour des interfaces qui captivent et convertissent. Chaque pixel est conçu pour réduire les frictions et maximiser l'engagement.",
+    "s4_title": "Consultance Informatique",
+    "s4_desc": "Accompagnement stratégique et optimisation des systèmes IT.",
     "card_link": "Nos projets"
   },
   "Blog": {

@@ -49,7 +49,7 @@ const CardLink = ({
 }) => (
   <Link
     href={href as any}
-    className="inline-flex items-center gap-1.5 text-sm font-medium text-action"
+    className="inline-flex items-center gap-1.5 text-sm font-medium text-action underline underline-offset-4"
   >
     {label}
     <ExternalLink size={13} strokeWidth={2} />
@@ -60,7 +60,18 @@ const CardLink = ({
    BASE STYLE COMMUN
  ───────────────────────────────────────────── */
 const baseStyle =
-  "flex flex-col bg-[#f0f4ff] rounded-[32px] overflow-hidden border border-[#010C29]/10 shadow-sm hover:shadow-md transition-shadow duration-300 break-inside-avoid mb-6";
+  "flex flex-col w-full max-w-[500px] bg-[#f0f4ff] rounded-[32px] overflow-hidden transition-shadow duration-300 break-inside-avoid mb-6 border border-transparent";
+
+// Style inline pour la bordure dégradée (trick background-clip pour supporter border-radius)
+const gradientBorderStyle = {
+  background:
+    "linear-gradient(#f0f4ff, #f0f4ff) padding-box, linear-gradient(135.64deg, rgba(163, 187, 255, 0.2835) 5.15%, rgba(241, 247, 255, 0.81) 50.01%, rgba(163, 187, 255, 0.81) 94.85%) border-box",
+  border: "1px solid transparent",
+};
+
+const noBorderStyle = {
+  border: "none",
+};
 
 /* ─────────────────────────────────────────────
    COMPOSANT PRINCIPAL
@@ -82,7 +93,7 @@ export const Card = ({
   ──────────────────────────────────────── */
   if (imagePosition === "top" && image) {
     return (
-      <div className={`${baseStyle} ${className}`}>
+      <div className={`${baseStyle} ${className}`} style={gradientBorderStyle}>
         {/* Image avec marges internes et coins arrondis */}
         <div className="p-3 pb-0">
           <div className="relative w-full h-[200px] rounded-[20px] overflow-hidden border border-[#010C29]/8">
@@ -100,9 +111,7 @@ export const Card = ({
           <h3 className="text-[#010C29] font-bold text-[16px] leading-snug">
             {title}
           </h3>
-          <p className="">
-            {description}
-          </p>
+          <p className="">{description}</p>
           <CardLink href={href} label={linkLabel} />
         </div>
       </div>
@@ -115,11 +124,11 @@ export const Card = ({
   ──────────────────────────────────────── */
   if (imagePosition === "none") {
     return (
-      <div className={`${baseStyle} ${className}`}>
+      <div className={`${baseStyle} ${className}`} style={noBorderStyle}>
         <div className="flex flex-col gap-4 p-7">
           {/* Icône stroke fine */}
           {icon && (
-            <div className="[&>svg]:w-9 [&>svg]:h-9 [&>svg]:stroke-[1.25] text-[#010C29] mb-1">
+            <div className="mb-1 text-[#010C29] [&_img]:block [&_img]:h-auto [&_img]:max-h-11 [&_img]:w-auto [&>svg]:block [&>svg]:h-auto [&>svg]:max-h-11 [&>svg]:w-auto [&>svg:not([width])]:size-9 [&>svg:not([width])]:stroke-[1.25]">
               {icon}
             </div>
           )}
@@ -142,9 +151,14 @@ export const Card = ({
   ──────────────────────────────────────── */
   if (imagePosition === "bottom" && image) {
     return (
-      <div className={`${baseStyle} ${className}`}>
+      <div className={`${baseStyle} ${className}`} style={gradientBorderStyle}>
         {/* Texte */}
         <div className="flex flex-col gap-4 p-7 pb-5">
+          {icon && (
+            <div className="mb-1 text-[#010C29] [&_img]:block [&_img]:h-auto [&_img]:max-h-11 [&_img]:w-auto [&>svg]:block [&>svg]:h-auto [&>svg]:max-h-11 [&>svg]:w-auto [&>svg:not([width])]:size-9 [&>svg:not([width])]:stroke-[1.25]">
+              {icon}
+            </div>
+          )}
           <h3 className="text-[#010C29] font-bold text-[16px] leading-snug">
             {title}
           </h3>
@@ -172,7 +186,7 @@ export const Card = ({
 
   /* Fallback */
   return (
-    <div className={`${baseStyle} ${className}`}>
+    <div className={`${baseStyle} ${className}`} style={gradientBorderStyle}>
       <div className="flex flex-col gap-4 p-7">
         <AccentLine />
         <h3 className="text-[#010C29] font-bold text-[16px] leading-snug">

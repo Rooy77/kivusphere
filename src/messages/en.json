@@ -29,16 +29,16 @@
   },
   "Services": {
     "badge": "Services",
-    "title": "Design With Purpose. Build With Impact.",
+    "title": "Design With Purpose.\nBuild With Impact.",
     "description": "We work closely with our clients to create clear, thoughtful, and human-centered digital experiences.",
     "s1_title": "Software Engineering & Mobile Systems",
     "s1_desc": "Creation of modern, high-performance and scalable websites. Robust mobile applications for Android and iOS.",
-    "s2_title": "Architecture, Graphic Design & UI/UX",
-    "s2_desc": "For interfaces that captivate and convert. Every pixel is designed to reduce friction and maximize customer engagement.",
-    "s3_title": "IT Consulting",
-    "s3_desc": "Strategic support and optimization of IT systems.",
-    "s4_title": "Marketing Strategy & Digital Growth",
-    "s4_desc": "Advanced strategies to boost your visibility, engage your audience and convert more effectively through digital channels.",
+    "s2_title": "Marketing Strategy & Digital Growth",
+    "s2_desc": "Advanced strategies to boost your visibility, engage your audience and convert more effectively through digital channels.",
+    "s3_title": "Architecture, Graphic Design & UI/UX",
+    "s3_desc": "For interfaces that captivate and convert. Every pixel is designed to reduce friction and maximize customer engagement.",
+    "s4_title": "IT Consulting",
+    "s4_desc": "Strategic support and optimization of IT systems.",
     "card_link": "Our projects"
   },
   "Blog": {
