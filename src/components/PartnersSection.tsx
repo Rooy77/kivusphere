@@ -23,12 +23,10 @@ export const PartnersSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
+            <span className="self-start inline-block px-5 py-2 rounded-full border border-black text-xs font-medium text-black">
               {t("badge")}
             </span>
-            <h2 className="section-title">
-              {t("title")}
-            </h2>
+            <h2 className="section-title">{t("title")}</h2>
           </div>
         </FadeIn>
 

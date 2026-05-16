@@ -11,7 +11,7 @@ export const TestimonialsSection = () => {
   const TESTIMONIAL = {
     name: "Ishimwe Israel Dixon",
     role: "CEO of Nexus OOS",
-    quote: t('client_quote'),
+    quote: t("client_quote"),
     image: "/assets/keyboard1.jpeg",
   };
 
@@ -20,15 +20,11 @@ export const TestimonialsSection = () => {
       <div className="max-w-5xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
-              {t('badge')}
+            <span className="self-start inline-block px-5 py-2 rounded-full border border-black text-xs font-medium text-black">
+              {t("badge")}
             </span>
-            <h2 className="section-title mb-4">
-              {t('title')}
-            </h2>
-            <p className="max-w-xl mx-auto">
-              {t('description')}
-            </p>
+            <h2 className="section-title mb-4">{t("title")}</h2>
+            <p className="max-w-xl mx-auto">{t("description")}</p>
           </div>
         </FadeIn>
 
@@ -51,9 +47,7 @@ export const TestimonialsSection = () => {
                 <span className="text-[#4576FD] text-sm font-medium mb-4">
                   {TESTIMONIAL.role}
                 </span>
-                <p className="">
-                  {TESTIMONIAL.quote}
-                </p>
+                <p className="">{TESTIMONIAL.quote}</p>
               </div>
             </div>
           </div>

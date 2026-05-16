@@ -14,18 +14,18 @@ export const BlogSection = () => {
 
   const BLOG_POSTS = [
     {
-      title: t('p1_title'),
-      category: t('p1_cat'),
-      excerpt: t('p1_excerpt'),
+      title: t("p1_title"),
+      category: t("p1_cat"),
+      excerpt: t("p1_excerpt"),
       image: "/assets/keyboard1.jpeg",
-      href: "/blog"
+      href: "/blog",
     },
     {
-      title: t('p2_title'),
-      category: t('p2_cat'),
-      excerpt: t('p2_excerpt'),
+      title: t("p2_title"),
+      category: t("p2_cat"),
+      excerpt: t("p2_excerpt"),
       image: "/assets/keyboard1.jpeg",
-      href: "/blog"
+      href: "/blog",
     },
   ];
 
@@ -39,15 +39,16 @@ export const BlogSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <FadeIn>
           <div className="mb-12">
-            <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
-              {t('badge')}
+            <span className="self-start inline-block px-5 py-2 rounded-full border border-black text-xs font-medium text-black">
+              {t("badge")}
             </span>
-            <h2 className="section-title mb-4">
-              {t('title')}
-            </h2>
-            <Link href="/blog" className="inline-flex items-center gap-2 mt-4 hover:opacity-80 transition-opacity">
+            <h2 className="section-title mb-4">{t("title")}</h2>
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 mt-4 hover:opacity-80 transition-opacity"
+            >
               <span className="text-sm font-medium text-[#010C29]/60">
-                {t('see_more')}
+                {t("see_more")}
               </span>
               <div className="w-8 h-8 rounded-full bg-[#010C29] flex items-center justify-center">
                 <ArrowRight className="w-4 h-4 text-white" />
@@ -83,9 +84,7 @@ export const BlogSection = () => {
                       <h3 className="text-3xl font-bold text-white mb-2">
                         {post.title}
                       </h3>
-                      <p className="text-white max-w-sm">
-                        {post.excerpt}
-                      </p>
+                      <p className="text-white max-w-sm">{post.excerpt}</p>
                     </div>
                   </div>
 
