@@ -42,7 +42,7 @@ export const BlogSection = () => {
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
               {t('badge')}
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="section-title mb-4">
               {t('title')}
             </h2>
             <Link href="/blog" className="inline-flex items-center gap-2 mt-4 hover:opacity-80 transition-opacity">
@@ -83,7 +83,7 @@ export const BlogSection = () => {
                       <h3 className="text-3xl font-bold text-white mb-2">
                         {post.title}
                       </h3>
-                      <p className="text-white/60 text-sm max-w-sm">
+                      <p className="text-white max-w-sm">
                         {post.excerpt}
                       </p>
                     </div>

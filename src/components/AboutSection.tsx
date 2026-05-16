@@ -23,16 +23,12 @@ export const AboutSection = () => {
         <FadeIn>
           <div>
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-6">
-              {t('badge')}
+              {t("badge")}
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              {t('title')}
-            </h2>
-            <p className="text-[#010C29]/60 text-lg mb-8 leading-relaxed">
-              {t('description')}
-            </p>
+            <h2 className="section-title mb-6 !text-left">{t("title")}</h2>
+            <p className="mb-8">{t("description")}</p>
             <Link href="/about">
-              <Button icon={ArrowRight}>{t('cta')}</Button>
+              <Button icon={ArrowRight}>{t("cta")}</Button>
             </Link>
           </div>
         </FadeIn>

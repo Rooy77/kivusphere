@@ -26,7 +26,7 @@ export const PartnersSection = () => {
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
               {t("badge")}
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-text">
+            <h2 className="section-title">
               {t("title")}
             </h2>
           </div>

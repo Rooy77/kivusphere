@@ -100,7 +100,7 @@ export const Card = ({
           <h3 className="text-[#010C29] font-bold text-[16px] leading-snug">
             {title}
           </h3>
-          <p className="text-[#010C29]/55 text-[13px] leading-relaxed">
+          <p className="">
             {description}
           </p>
           <CardLink href={href} label={linkLabel} />

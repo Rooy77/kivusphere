@@ -23,10 +23,10 @@ export const TestimonialsSection = () => {
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
               {t('badge')}
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="section-title mb-4">
               {t('title')}
             </h2>
-            <p className="text-[#010C29]/50 max-w-xl mx-auto">
+            <p className="max-w-xl mx-auto">
               {t('description')}
             </p>
           </div>
@@ -51,7 +51,7 @@ export const TestimonialsSection = () => {
                 <span className="text-[#4576FD] text-sm font-medium mb-4">
                   {TESTIMONIAL.role}
                 </span>
-                <p className="text-[#010C29]/50 text-sm leading-relaxed">
+                <p className="">
                   {TESTIMONIAL.quote}
                 </p>
               </div>

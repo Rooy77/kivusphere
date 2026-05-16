@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales, routing } from "@/navigation";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 // We can make metadata dynamic later, keeping it static for now but fixing the hardcoded locale
 export const metadata: Metadata = {
@@ -43,7 +40,7 @@ export default async function RootLayout({
     <html lang={locale} className="dark">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.variable} font-light antialiased`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

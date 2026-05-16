@@ -18,7 +18,7 @@ export const EventsSection = () => {
             <span className="inline-block px-4 py-1.5 rounded-full border border-[#010C29]/10 text-xs font-semibold uppercase tracking-wider text-[#4576FD] mb-4">
               {t('badge')}
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold">
+            <h2 className="section-title">
               {t('title')}
             </h2>
           </div>
@@ -41,7 +41,7 @@ export const EventsSection = () => {
               <h3 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
                 {t('event_title')}
               </h3>
-              <p className="text-[#010C29]/60 text-lg leading-relaxed mb-10">
+              <p className="mb-10">
                 {t('event_desc')}
               </p>
               <div className="flex items-center gap-6">

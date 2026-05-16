@@ -69,7 +69,7 @@ export const Footer = () => {
                 height={45}
                 className="mb-6"
               />
-              <p className="text-[#010C29]/50 text-sm leading-relaxed mb-8">
+              <p className="text-left mb-8">
                 {t("address")}
               </p>
               <div className="flex gap-3">

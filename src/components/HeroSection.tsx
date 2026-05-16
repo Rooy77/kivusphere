@@ -27,7 +27,7 @@ export const HeroSection = () => {
               ))}
             </h1>
             {/* Subheading */}
-            <p className="mt-8 text-sm font-medium text-gray-200 dark:text-gray-400">
+            <p className="mt-8 hero-p font-medium">
               {t('description')}
             </p>
           </div>
