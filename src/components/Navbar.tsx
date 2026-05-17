@@ -51,14 +51,20 @@ export const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isDarkBg, setIsDarkBg] = useState(true);
   const [desktopPagesOpen, setDesktopPagesOpen] = useState(false);
   const [desktopLangOpen, setDesktopLangOpen] = useState(false);
   const [mobilePagesOpen, setMobilePagesOpen] = useState(false);
   const [mobileLangOpen, setMobileLangOpen] = useState(false);
 
   React.useEffect(() => {
+    // Initialisation au chargement
+    setScrolled(window.scrollY > 20);
+    setIsDarkBg(window.scrollY < 700);
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      setIsDarkBg(window.scrollY < 700);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -77,13 +83,34 @@ export const Navbar = () => {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl rounded-full transition-all duration-500 border ${
-        scrolled
-          ? "bg-primary/20 backdrop-blur-xl border-white/20 shadow-xl py-1"
-          : "bg-[#b0c4ff]/10 backdrop-blur-lg border-white/10 py-0"
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl rounded-full transition-all duration-500 ${
+        scrolled ? "py-1" : "py-0"
       }`}
+      style={{
+        background: scrolled
+          ? "rgba(255, 255, 255, 0.12)"
+          : "rgba(255, 255, 255, 0.08)",
+        backdropFilter: "blur(50px)",
+        WebkitBackdropFilter: "blur(50px)",
+      }}
     >
-      <div className="px-6">
+      {/* Bordure dégradée de la Navbar — specs Figma de VisionBadge */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "9999px",
+          padding: "0.7px",
+          background:
+            "linear-gradient(135.64deg, rgba(163, 187, 255, 0.2835) 5.15%, rgba(241, 247, 255, 0.81) 50.01%, rgba(163, 187, 255, 0.81) 94.85%)",
+          WebkitMask:
+            "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMaskComposite: "xor",
+          maskComposite: "exclude",
+          pointerEvents: "none",
+        }}
+      />
+      <div className="px-6 relative z-10">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link
@@ -91,7 +118,11 @@ export const Navbar = () => {
             className=" px-3 py-1 rounded-full flex items-center gap-2"
           >
             <Image
-              src="/assets/logos/kivusphere-full-light.svg"
+              src={
+                isDarkBg
+                  ? "/assets/logos/kivusphere-full-light.svg"
+                  : "/assets/logos/kivusphere-full-dark.svg"
+              }
               width={160}
               height={160}
               alt="Logo KivuSphere"
@@ -106,7 +137,7 @@ export const Navbar = () => {
                   <motion.div whileHover={{ scale: 1.05 }}>
                     <Link
                       href={link.href as any}
-                      className="text-sm font-semibold text-primary hover:text-action transition-colors"
+                      className={`text-sm font-semibold transition-colors hover:text-action ${isDarkBg ? "text-white" : "text-black"}`}
                     >
                       {t(link.key)}
                     </Link>
@@ -115,12 +146,12 @@ export const Navbar = () => {
                   <>
                     <div
                       onClick={() => setDesktopPagesOpen(!desktopPagesOpen)}
-                      className="flex items-center gap-1 cursor-pointer select-none text-sm font-semibold text-primary hover:text-action"
+                      className={`flex items-center gap-1 cursor-pointer select-none text-sm font-semibold hover:text-action ${isDarkBg ? "text-white" : "text-black"}`}
                     >
                       {t(link.key)}
                       <ChevronDown
                         size={14}
-                        className={`transition-transform ${desktopPagesOpen ? "rotate-180" : ""}`}
+                        className={`transition-transform ${desktopPagesOpen ? "rotate-180" : ""} ${isDarkBg ? "text-white" : "text-black"}`}
                       />
                     </div>
 
@@ -157,12 +188,19 @@ export const Navbar = () => {
             <div className="relative">
               <div
                 onClick={() => setDesktopLangOpen(!desktopLangOpen)}
-                className="inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full border border-primary/20 px-3 py-2 text-sm font-medium text-primary sm:px-4 hover:bg-primary/5 transition-colors"
+                className={`inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-full px-3 py-2 text-sm font-medium sm:px-4 transition-colors ${
+                  isDarkBg
+                    ? "border border-white/20 text-white hover:bg-white/10"
+                    : "border border-black/20 text-black hover:bg-black/5"
+                }`}
               >
-                {currentLang.emoji} <span className="ml-1">{currentLang.label}</span>
+                {currentLang.emoji}{" "}
+                <span className="ml-1">{currentLang.label}</span>
                 <ChevronDown
                   size={14}
-                  className={`transition-transform ${desktopLangOpen ? "rotate-180" : ""}`}
+                  className={`transition-transform ${desktopLangOpen ? "rotate-180" : ""} ${
+                    isDarkBg ? "text-white" : "text-black"
+                  }`}
                 />
               </div>
 
@@ -189,13 +227,17 @@ export const Navbar = () => {
               </AnimatePresence>
             </div>
             <div className="hidden md:flex items-center gap-4">
-              <Button icon="">{t('contact')}</Button>
+              <Button icon="">{t("contact")}</Button>
             </div>
 
             {/* Mobile button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-gray-300 hover:text-white"
+              className={`md:hidden transition-colors ${
+                isDarkBg
+                  ? "text-gray-300 hover:text-white"
+                  : "text-black hover:text-action"
+              }`}
             >
               <motion.div
                 animate={{ rotate: isOpen ? 180 : 0 }}
@@ -284,7 +326,8 @@ export const Navbar = () => {
                   onClick={() => setMobileLangOpen(!mobileLangOpen)}
                   className="flex justify-between items-center cursor-pointer text-lg font-medium text-gray-300 hover:text-white"
                 >
-                  {currentLang.emoji} <span className="ml-2">{currentLang.label}</span>
+                  {currentLang.emoji}{" "}
+                  <span className="ml-2">{currentLang.label}</span>
                   <ChevronDown
                     className={`transition-transform ${mobileLangOpen ? "rotate-180" : ""}`}
                     size={18}
@@ -321,21 +364,21 @@ export const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className="text-sm text-gray-400 hover:text-white"
                 >
-                  {t('projects')}
+                  {t("projects")}
                 </Link>
                 <Link
                   href="/events"
                   onClick={() => setIsOpen(false)}
                   className="text-sm text-gray-400 hover:text-white"
                 >
-                  {t('events')}
+                  {t("events")}
                 </Link>
                 <Link
                   href="/blog"
                   onClick={() => setIsOpen(false)}
                   className="text-sm text-gray-400 hover:text-white"
                 >
-                  {t('blog')}
+                  {t("blog")}
                 </Link>
                 <Link
                   href="/contact"
@@ -346,7 +389,7 @@ export const Navbar = () => {
                 </Link>
               </div>
               <Button icon={ArrowRight} className="w-full justify-center py-4">
-                {t('contact')}
+                {t("contact")}
               </Button>
             </div>
           </motion.div>
