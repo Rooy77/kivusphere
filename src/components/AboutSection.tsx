@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
-import { Button, Ornament } from "@/components/ui";
+import { Button, Ornament, VisionBadge } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
@@ -88,12 +88,8 @@ export const AboutSection = () => {
                   fill
                   className="object-cover"
                 />
-                {/* Glassmorphisme badge - 81x23px, extreme blur, subtle gradient border approximation */}
-                <div className="absolute top-4 left-4 inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-[50px] border border-white/20 shadow-sm">
-                  <span className="text-[10px] font-bold text-white tracking-[0.1em] uppercase leading-none">
-                    {t("vision_label")}
-                  </span>
-                </div>
+                {/* Badge VISION — composant réutilisable pixel-perfect Figma */}
+                <VisionBadge label={t("vision_label")} />
               </div>
 
               {/* Vision text */}

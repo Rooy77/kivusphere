@@ -30,66 +30,27 @@ export const PartnersSection = () => {
           </div>
         </FadeIn>
 
-        <div className="relative space-y-12 overflow-hidden py-10">
-          {/* Gradients pour masquer les bords */}
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-          {/* Premier Carrousel - Vers la gauche */}
-          <FadeIn delay={0.1}>
-            <div className="flex w-full">
-              <motion.div
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{
-                  duration: 30,
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
-                className="flex gap-20 items-center whitespace-nowrap"
-              >
-                {[...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS].map(
-                  (p, idx) => (
-                    <Image
-                      key={`${p.name}-${idx}`}
-                      src={p.src}
-                      alt={p.name}
-                      width={140}
-                      height={60}
-                      className="h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
-                    />
-                  ),
-                )}
-              </motion.div>
+        <div className="flex flex-wrap items-center justify-center gap-6 max-w-7xl">
+          {PARTNERS.map((partner) => (
+            <div
+              key={partner.name}
+              className="
+                flex items-center justify-center
+                // w-[140px] sm:w-[180px] md:w-[220px] lg:w-[280px]
+                h-24
+                bg-white
+                transition
+              "
+            >
+              <Image
+                src={partner.src}
+                alt={`${partner.name} logo`}
+                width={120}
+                height={40}
+                className="object-contain"
+              />
             </div>
-          </FadeIn>
-
-          {/* Deuxième Carrousel - Vers la droite */}
-          <FadeIn delay={0.2}>
-            <div className="flex w-full">
-              <motion.div
-                animate={{ x: ["-50%", "0%"] }}
-                transition={{
-                  duration: 35,
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
-                className="flex gap-20 items-center whitespace-nowrap"
-              >
-                {[...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS]
-                  .reverse()
-                  .map((p, idx) => (
-                    <Image
-                      key={`${p.name}-rev-${idx}`}
-                      src={p.src}
-                      alt={p.name}
-                      width={140}
-                      height={60}
-                      className="h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
-                    />
-                  ))}
-              </motion.div>
-            </div>
-          </FadeIn>
+          ))}
         </div>
       </div>
     </section>

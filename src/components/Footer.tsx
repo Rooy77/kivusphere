@@ -3,17 +3,27 @@
 import React from "react";
 import Image from "next/image";
 import { Link } from "@/navigation";
-import {
-  Mail,
-  Send,
-  Facebook,
-  Instagram,
-  Twitter,
-  Linkedin,
-} from "lucide-react";
+import { Mail, Send, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
 import { useTranslations } from "next-intl";
+
+const XIcon = ({
+  size = 16,
+  className = "",
+  ...props
+}: { size?: number; className?: string } & React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    width={size}
+    height={size}
+    className={className}
+    {...props}
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const FOOTER_SECTIONS = [
   {
@@ -69,9 +79,7 @@ export const Footer = () => {
                 height={45}
                 className="mb-6"
               />
-              <p className="text-left mb-8">
-                {t("address")}
-              </p>
+              <p className="text-left mb-8">{t("address")}</p>
               <div className="flex gap-3">
                 {[
                   {
@@ -82,7 +90,10 @@ export const Footer = () => {
                     Icon: Instagram,
                     href: "https://www.instagram.com/kivus_phere?igsh=MXM1azkxM2ZrMnI1MA==",
                   },
-                  { Icon: Twitter, href: "https://x.com/KivuSphere" },
+                  {
+                    Icon: XIcon,
+                    href: "https://x.com/KivuSphere",
+                  },
                   {
                     Icon: Linkedin,
                     href: "https://www.linkedin.com/in/kivu-sphere-420a2b39a/",
@@ -93,9 +104,9 @@ export const Footer = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full bg-secondary/10 text-secondary flex items-center justify-center hover:bg-secondary hover:text-white transition-all"
+                    className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center hover:opacity-90 hover:scale-105 transition-all"
                   >
-                    <Icon size={16} />
+                    <Icon size={16} className="text-foreground" />
                   </a>
                 ))}
               </div>
@@ -130,15 +141,29 @@ export const Footer = () => {
         <div className="pt-12 border-t border-[#010C29]/5">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-8 mb-12">
             <FadeIn className="max-w-md w-full">
-              <div className="relative flex items-center bg-white rounded-full shadow-sm border border-[#010C29]/5 overflow-hidden p-1">
-                <Mail className="absolute left-4 w-5 h-5 text-[#010C29]/30" />
-                <input
-                  type="email"
-                  placeholder={t("newsletter_placeholder")}
-                  className="flex-1 pl-12 pr-4 py-3 text-sm bg-transparent outline-none text-[#010C29] placeholder:text-[#010C29]/30"
-                />
-                <Button icon={Send}>{t("newsletter_button")}</Button>
-              </div>
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="relative flex items-stretch bg-white rounded-full shadow-sm border border-[#010C29]/5 overflow-hidden min-h-[48px]"
+              >
+                <div className="relative flex-1 flex items-center">
+                  <Mail className="absolute left-4 w-5 h-5 text-[#010C29]/30 pointer-events-none" />
+                  <input
+                    type="email"
+                    required
+                    placeholder={t("newsletter_placeholder")}
+                    className="w-full pl-12 pr-4 py-3.5 text-sm bg-transparent outline-none text-[#010C29] placeholder:text-[#010C29]/30"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-secondary text-white px-5 rounded-full sm:px-6 font-medium text-sm flex items-center justify-center gap-2 hover:bg-secondary/90 transition-all cursor-pointer shrink-0 active:scale-95"
+                >
+                  <span className="hidden min-[380px]:inline">
+                    {t("newsletter_button")}
+                  </span>
+                  <Send className="w-4 h-4" />
+                </button>
+              </form>
             </FadeIn>
 
             <FadeIn delay={0.2} className="flex flex-wrap justify-center gap-6">
