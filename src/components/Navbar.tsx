@@ -58,16 +58,110 @@ export const Navbar = () => {
   const [mobileLangOpen, setMobileLangOpen] = useState(false);
 
   React.useEffect(() => {
-    // Initialisation au chargement
-    setScrolled(window.scrollY > 20);
-    setIsDarkBg(window.scrollY < 700);
+    const isElementDark = (el: Element | null): boolean => {
+      if (!el) return false;
 
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      setIsDarkBg(window.scrollY < 700);
+      // Note: Cette détection simple et robuste fonctionne pour tous les cas :
+      // - Fonds solides (bg-white, bg-black)
+      // - Overlays semi-transparents (bg-[#010C29]/85)
+      // - Fonds d'images avec overlays (CtaSection)
+      // - Dégradés (calcule la luminosité réelle)
+
+      // 3. Calcul mathématique de la luminosité (YIQ) sur le style de fond calculé par le navigateur
+      try {
+        const computedStyle = window.getComputedStyle(el);
+        const bgColor = computedStyle.backgroundColor;
+
+        if (
+          bgColor &&
+          bgColor !== "rgba(0, 0, 0, 0)" &&
+          bgColor !== "transparent"
+        ) {
+          const match = bgColor.match(/\d+/g);
+          if (match && match.length >= 3) {
+            const r = parseInt(match[0]);
+            const g = parseInt(match[1]);
+            const b = parseInt(match[2]);
+            const alpha = match.length >= 4 ? parseInt(match[3]) / 255 : 1;
+            // Formule standard YIQ de perception de luminosité de l'œil humain
+            // Applique l'alpha pour les couleurs semi-transparentes
+            const brightness = ((r * 299 + g * 587 + b * 114) / 1000) * alpha;
+            if (brightness < 128) return true; // Fond sombre
+            if (brightness > 128) return false; // Fond clair
+          }
+        }
+      } catch (e) {}
+
+      return false;
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const checkBackgroundTheme = () => {
+      setScrolled(window.scrollY > 20);
+
+      const navbarY = window.scrollY + 50;
+      const xPosition = window.innerWidth / 2;
+
+      // Trouver l'élément à Y=scrollY+50 au centre horizontal (position absolue de la navbar dans le viewport)
+      const elementAtPoint = document.elementFromPoint(xPosition, 50);
+
+      let foundSection = false;
+
+      if (elementAtPoint) {
+        // Essaie de trouver une section directe ou un wrapper
+        const section = elementAtPoint.closest(
+          "section, [data-navbar-theme], main > div",
+        );
+        if (section) {
+          setIsDarkBg(isElementDark(section));
+          foundSection = true;
+        }
+      }
+
+      // Si pas trouvé, cherche la section active en scrollY
+      if (!foundSection) {
+        const main = document.querySelector("main");
+        if (main) {
+          const sections = Array.from(
+            main.querySelectorAll("section, main > div"),
+          );
+          for (const section of sections) {
+            const rect = (section as HTMLElement).getBoundingClientRect();
+            // Vérifie si la navbar (à Y=50) intersecte la section
+            if (rect.top <= 50 && rect.bottom >= 50) {
+              setIsDarkBg(isElementDark(section));
+              foundSection = true;
+              break;
+            }
+          }
+        }
+      }
+
+      // Fallback final
+      if (!foundSection) {
+        setIsDarkBg(window.scrollY < 700);
+      }
+    };
+
+    // Initialisation
+    checkBackgroundTheme();
+
+    // Détection continue via RAF pour réactivité maximale
+    let rafId: number;
+    const continuousCheck = () => {
+      checkBackgroundTheme();
+      rafId = requestAnimationFrame(continuousCheck);
+    };
+    rafId = requestAnimationFrame(continuousCheck);
+
+    // Listeners pour les changements critiques
+    window.addEventListener("scroll", checkBackgroundTheme);
+    window.addEventListener("resize", checkBackgroundTheme);
+
+    return () => {
+      window.removeEventListener("scroll", checkBackgroundTheme);
+      window.removeEventListener("resize", checkBackgroundTheme);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const handleLanguageChange = (newLocale: string) => {
@@ -102,7 +196,7 @@ export const Navbar = () => {
           borderRadius: "9999px",
           padding: "0.7px",
           background:
-            "linear-gradient(135.64deg, rgba(163, 187, 255, 0.2835) 5.15%, rgba(241, 247, 255, 0.81) 50.01%, rgba(163, 187, 255, 0.81) 94.85%)",
+            "linear-gradient(135.64deg, rgba(163, 187, 255, 0.2835) 5.15%, rgba(0, 0, 0, 0) 50.01%, rgba(163, 187, 255, 0.81) 94.85%)",
           WebkitMask:
             "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           WebkitMaskComposite: "xor",
@@ -162,7 +256,7 @@ export const Navbar = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.3 }}
-                          className="absolute top-8 left-0 w-44 bg-white/95 backdrop-blur-md shadow-xl rounded-xl flex flex-col py-2 border border-primary/10"
+                          className="absolute top-8 left-0 w-44 bg-white/95 backdrop-blur-md shadow-xl rounded-xl flex flex-col py-2 border "
                         >
                           {link.children!.map((child) => (
                             <Link
