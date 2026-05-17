@@ -52,7 +52,7 @@ export const ServicesSection = () => {
     {
       title: t("s4_title"),
       description: t("s4_desc"),
-      image: "/assets/software.jpg",
+      image: "/assets/consulting.jpg",
       imagePosition: "bottom" as const,
       href: "/services",
     },

@@ -34,13 +34,7 @@ export const PartnersSection = () => {
           {PARTNERS.map((partner) => (
             <div
               key={partner.name}
-              className="
-                flex items-center justify-center
-                // w-[140px] sm:w-[180px] md:w-[220px] lg:w-[280px]
-                h-24
-                bg-white
-                transition
-              "
+              className="flex items-center justify-center w-[140px] sm:w-[180px] md:w-[220px] lg:w-[280px] h-24 bg-white transition"
             >
               <Image
                 src={partner.src}

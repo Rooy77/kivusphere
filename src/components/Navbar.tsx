@@ -61,11 +61,48 @@ export const Navbar = () => {
     const isElementDark = (el: Element | null): boolean => {
       if (!el) return false;
 
-      // Note: Cette détection simple et robuste fonctionne pour tous les cas :
-      // - Fonds solides (bg-white, bg-black)
-      // - Overlays semi-transparents (bg-[#010C29]/85)
-      // - Fonds d'images avec overlays (CtaSection)
-      // - Dégradés (calcule la luminosité réelle)
+      // 1. Attribut explicite de secours si besoin de forcer manuellement
+      const explicitTheme =
+        el.getAttribute("data-navbar-theme") || el.getAttribute("data-theme");
+      if (explicitTheme) return explicitTheme === "dark";
+
+      // 2. Vérification par classes CSS de fond sombre connues sur l'élément ou ses descendants
+      const classes = el.className || "";
+      if (typeof classes === "string") {
+        // Fonds sombres
+        if (
+          classes.includes("bg-black") ||
+          classes.includes("bg-[#010C29]") ||
+          classes.includes("bg-primary") ||
+          classes.includes("bg-[#020408]")
+        ) {
+          return true;
+        }
+        // Fonds clairs (explicitement blancs ou clairs)
+        if (
+          classes.includes("bg-white") ||
+          classes.includes("bg-[#f0f4ff]") ||
+          classes.includes("bg-bg-soft")
+        ) {
+          return false;
+        }
+      }
+
+      try {
+        const darkChild = el.querySelector(
+          '[class*="bg-black"], [class*="bg-[#010C29]"], [class*="bg-primary"], [class*="bg-[#020408]"], [data-navbar-theme="dark"]',
+        );
+        if (darkChild) {
+          return true;
+        }
+
+        const lightChild = el.querySelector(
+          '[class*="bg-white"], [class*="bg-[#f0f4ff]"], [class*="bg-bg-soft"]',
+        );
+        if (lightChild) {
+          return false;
+        }
+      } catch (e) {}
 
       // 3. Calcul mathématique de la luminosité (YIQ) sur le style de fond calculé par le navigateur
       try {
@@ -91,6 +128,38 @@ export const Navbar = () => {
           }
         }
       } catch (e) {}
+
+      // 4. Analyse récursive des overlays absolus sombres (ex: CtaSection avec fond d'image assombri)
+      const absoluteOverlays = el.querySelectorAll(".absolute, .fixed");
+      for (const overlay of Array.from(absoluteOverlays)) {
+        try {
+          const computedOverlay = window.getComputedStyle(overlay);
+          const overlayBg = computedOverlay.backgroundColor;
+          if (
+            overlayBg &&
+            overlayBg !== "rgba(0, 0, 0, 0)" &&
+            overlayBg !== "transparent"
+          ) {
+            const match = overlayBg.match(/\d+/g);
+            if (match && match.length >= 3) {
+              const r = parseInt(match[0]);
+              const g = parseInt(match[1]);
+              const b = parseInt(match[2]);
+              const alpha = match.length >= 4 ? parseInt(match[3]) / 255 : 1;
+              const brightness = ((r * 299 + g * 587 + b * 114) / 1000) * alpha;
+              // Si un calque couvrant quasiment tout le bloc est sombre, la section est considérée sombre
+              if (
+                brightness < 128 &&
+                alpha >= 0.3 &&
+                (overlay as HTMLElement).offsetWidth >=
+                  (el as HTMLElement).offsetWidth * 0.85
+              ) {
+                return true;
+              }
+            }
+          }
+        } catch (e) {}
+      }
 
       return false;
     };
