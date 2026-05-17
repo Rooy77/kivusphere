@@ -1,29 +1,34 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 
 interface OrnamentProps {
-  position?: "left" | "right";
+  position?: "left" | "right" | "custom";
   opacity?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const Ornament = ({
-  position = "right",
-  opacity = 0.4,
+  position = "custom",
+  opacity,
   className = "",
+  style,
 }: OrnamentProps) => {
   const strokeColor = "var(--color-action-soft)";
 
   return (
     <div
       className={`
-        absolute top-0 pointer-events-none z-0 h-full w-[800px]
-        ${position === "right" ? "-right-[400px]" : "-left-[400px]"}
+        absolute pointer-events-none z-0
+        ${position === "right" ? "top-0 h-full w-[800px] -right-[400px]" : ""}
+        ${position === "left" ? "top-0 h-full w-[800px] -left-[400px]" : ""}
         ${className}
       `}
-      style={{ opacity }}
+      style={{
+        ...(opacity !== undefined ? { opacity } : {}),
+        ...style,
+      }}
     >
       <svg
         width="1113"

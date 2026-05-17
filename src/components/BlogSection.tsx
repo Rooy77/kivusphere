@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { ChevronRight, MoveDownRight } from "lucide-react";
-import { Ornament, VisionBadge } from "@/components/ui";
+import { VisionBadge } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -31,11 +30,6 @@ export const BlogSection = () => {
 
   return (
     <section className="relative bg-bg-soft py-24 md:py-32 text-background overflow-hidden">
-      <Ornament
-        position="right"
-        opacity={0.4}
-        className="absolute -top-40 -right-40 hidden md:block"
-      />
       <div className="max-w-7xl mx-auto px-6">
         <FadeIn>
           <div className="mb-12">

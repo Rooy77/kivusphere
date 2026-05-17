@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
-import { Button, Ornament, VisionBadge } from "@/components/ui";
+import { Button, VisionBadge } from "@/components/ui";
 import { FadeIn } from "./FadeIn";
 import { useTranslations } from "next-intl";
 import { Link } from "@/navigation";
@@ -14,12 +14,6 @@ export const AboutSection = () => {
 
   return (
     <section className="relative py-24 md:py-32 bg-white text-foreground overflow-hidden">
-      <Ornament
-        position="right"
-        opacity={0.3}
-        className="absolute -bottom-40 -left-115 hidden md:block"
-      />
-
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr_1fr] gap-8 md:gap-10 items-center">
           {/* ── Colonne gauche : Texte ── */}
